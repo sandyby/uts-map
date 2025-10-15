@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Sawitku</string>
+    <string name="login_btn">LOGIN</string>
+    <string name="register_btn">REGISTER</string>
 </resources>
