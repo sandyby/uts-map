@@ -202,6 +202,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/bg_primary_500"
                 android:fontFamily="@font/lato_bold"
+                android:textColor="@color/bg_secondary_900"
                 android:paddingVertical="16sp"
                 android:text="@string/login_btn"
                 android:textSize="16sp" />

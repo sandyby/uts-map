@@ -6,10 +6,13 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import com.example.sawitku.RegisterActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var tvSwitchRegister: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -20,8 +23,9 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val tvRegister = findViewById<TextView>(R.id.tv_switchRegister)
-        tvRegister.setOnClickListener {
+
+        tvSwitchRegister = findViewById<TextView>(R.id.tv_switchRegister)
+        tvSwitchRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }

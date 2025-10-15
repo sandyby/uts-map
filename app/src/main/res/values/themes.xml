@@ -21,4 +21,11 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
+    <style name="Theme.Sawitku.SplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/bg_primary_500</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/sawitku_logo_foreground</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.Sawitku</item>
+    </style>
+
 </resources>
