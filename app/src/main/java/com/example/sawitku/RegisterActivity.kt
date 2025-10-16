@@ -2,10 +2,10 @@ package com.example.sawitku
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Debug
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
-import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -14,7 +14,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
-import com.example.sawitku.LoginActivity
 import com.example.sawitku.models.User
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -42,7 +41,11 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var mBtnRegister: MaterialButton
 
     private lateinit var database: DatabaseReference
-    private var isButtonEnabled: Boolean = false
+    private var isFullNameValid = false
+    private var isEmailValid = false
+    private var isPasswordValid = false
+    private var isConfirmPasswordValid = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,13 +72,10 @@ class RegisterActivity : AppCompatActivity() {
 
         mBtnRegister = findViewById<MaterialButton>(R.id.mBtn_register)
 
-        val textInputs = listOf(tietFullName, tietEmail, tietPassword, tietConfirmPassword)
-        textInputs.forEach { input ->
-            input.addTextChangedListener {
-                mBtnRegister.isEnabled = allInputValid()
-                isButtonEnabled = allInputValid()
-            }
-        }
+        tietFullName.addTextChangedListener(FullNameWatcher())
+        tietEmail.addTextChangedListener(EmailWatcher())
+        tietPassword.addTextChangedListener(PasswordWatcher())
+        tietConfirmPassword.addTextChangedListener(ConfirmPasswordWatcher())
 
 //        database = FirebaseDatabase.getInstance().reference
         database =
@@ -88,120 +88,159 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         mBtnRegister.setOnClickListener {
-            if (validateFields()) {
-                val fullName = tietFullName.text.toString().trim()
-                val email = tietEmail.text.toString().trim()
-                val password = tietPassword.text.toString().trim()
+            val fullName = tietFullName.text.toString().trim()
+            val email = tietEmail.text.toString().trim()
+            val password = tietPassword.text.toString().trim()
+            // Final validation and registration
+            validateFieldsAndRegister(fullName, email, password)
+        }
+    }
+    private inner class FullNameWatcher : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable?) {
+            val fullName = tietFullName.text.toString().trim()
+            isFullNameValid = when {
+                fullName.isEmpty() -> {
+                    tilFullName.error = "Full name is required"
+                    false
+                }
 
-                checkIfUserExistsAndRegister(fullName, email, password)
-//                registerUser(fullName, email, password)
-                if (!isButtonEnabled) mBtnRegister.isEnabled = false
+                fullName.length < 3 -> {
+                    tilFullName.error = "Full name must be at least 3 characters long"
+                    false
+                }
+
+                !fullName.matches(Regex("^[a-zA-Z]{3,}(?: [a-zA-Z]+){0,2}$")) -> {
+                    tilFullName.error = "Full name must not contain invalid symbols"
+                    false
+                }
+
+                else -> {
+                    tilFullName.error = null
+                    tilFullName.isErrorEnabled = false
+                    true
+                }
             }
+            updateRegisterButtonState()
         }
     }
 
-    private fun allInputValid(): Boolean {
-        val fullName = tietFullName.text.toString().trim()
-        val email = tietEmail.text.toString().trim()
-        val password = tietPassword.text.toString().trim()
-        val confirmPassword = tietConfirmPassword.text.toString().trim()
+    private inner class EmailWatcher : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable?) {
+            val email = tietEmail.text.toString().trim()
+            isEmailValid = when {
+                email.isEmpty() -> {
+                    tilEmail.error = "E-mail is required"
+                    false
+                }
 
-        return fullName.isNotEmpty()
-                && email.isNotEmpty()
-                && Patterns.EMAIL_ADDRESS.matcher(email).matches()
-                && password.isNotEmpty()
-                && password.length >= 6
-                && confirmPassword == password
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    tilEmail.error = "Invalid e-mail format"
+                    false
+                }
+
+                else -> {
+                    tilEmail.error = null
+                    tilEmail.isErrorEnabled = false
+                    true
+                }
+            }
+            updateRegisterButtonState()
+        }
     }
 
-    private fun checkIfUserExistsAndRegister(fullName: String, email: String, password: String) {
-        val usersRef = database.child("users")
+    private inner class PasswordWatcher : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable?) {
+            val password = tietPassword.text.toString().trim()
+            isPasswordValid = when {
+                password.isEmpty() -> {
+                    tilPassword.error = "Password is required"
+                    false
+                }
 
-        usersRef.orderByChild("email").equalTo(email)
+                password.length < 8 -> {
+                    tilPassword.error = "Password must be at least 8 characters long"
+                    false
+                }
+
+                else -> {
+                    tilPassword.error = null
+                    tilPassword.isErrorEnabled = false
+                    true
+                }
+            }
+            validateConfirmPassword()
+            updateRegisterButtonState()
+        }
+    }
+
+    private inner class ConfirmPasswordWatcher : TextWatcher {
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        override fun afterTextChanged(s: Editable?) {
+            validateConfirmPassword()
+            updateRegisterButtonState()
+        }
+    }
+
+    private fun validateConfirmPassword() {
+        val confirmPassword = tietConfirmPassword.text.toString().trim()
+        val password = tietPassword.text.toString().trim()
+        isConfirmPasswordValid = if ((!password.isEmpty() && confirmPassword.isEmpty()) || confirmPassword != password) {
+                tilConfirmPassword.error = "Passwords do not match"
+                false
+            } else {
+                tilConfirmPassword.error = null
+                tilConfirmPassword.isErrorEnabled = false
+                true
+            }
+    }
+
+    private fun updateRegisterButtonState() {
+        mBtnRegister.isEnabled =
+            isFullNameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid
+    }
+
+    private fun validateFieldsAndRegister(fullName: String, email: String, password: String) {
+        // Disable button while checking
+        mBtnRegister.isEnabled = false
+
+        // Check if email already exists
+        database.child("users").orderByChild("email").equalTo(email)
             .get()
             .addOnSuccessListener { snapshot ->
                 if (snapshot.exists()) {
-                    tilEmail.isErrorEnabled = true
-                    tilEmail.error = "Email already registered"
-                    Toast.makeText(this, "This email is already registered.", Toast.LENGTH_LONG)
-                        .show()
-                    mBtnRegister.isEnabled = false
-                    isButtonEnabled = false
+                    tilEmail.error = "E-mail is already registered"
+                    mBtnRegister.isEnabled = true
                 } else {
+                    tilEmail.error = null
                     registerUser(fullName, email, password)
                 }
             }
-            .addOnFailureListener { error ->
-                Log.d("RegisterActivity", error.message.toString())
-                Toast.makeText(
-                    this,
-                    "Something went wrong, please try again later!",
-                    Toast.LENGTH_LONG
-                ).show()
+            .addOnFailureListener {
+                Log.d("RegisterActivity", "Error checking email: ${it.message}")
+//                Toast.makeText(this, "Error checking email: ${it.message}", Toast.LENGTH_LONG).show()
+                mBtnRegister.isEnabled = true
             }
     }
 
-    private fun validateFields(): Boolean {
-        var isValid = true
-
-        val fullName = tietFullName.text.toString().trim()
-        val email = tietEmail.text.toString().trim()
-        val password = tietPassword.text.toString().trim()
-        val confirmPassword = tietConfirmPassword.text.toString().trim()
-
-        listOf(tilFullName, tilEmail, tilPassword, tilConfirmPassword).forEach {
-            it.isErrorEnabled = false
-            it.error = null
-        }
-
-        if (fullName.isEmpty()) {
-            tilFullName.isErrorEnabled = true
-            tilFullName.error = "Full name required"
-            isValid = false
-        }
-
-        if (email.isEmpty()) {
-            tilEmail.isErrorEnabled = true
-            tilEmail.error = "E-mail required"
-            isValid = false
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            tilEmail.isErrorEnabled = true
-            tilEmail.error = "Invalid e-mail address"
-            isValid = false
-        }
-
-        if (password.isEmpty()) {
-            tilPassword.isErrorEnabled = true
-            tilPassword.error = "Password required"
-            isValid = false
-        } else if (password.length < 6) {
-            tilPassword.isErrorEnabled = true
-            tilPassword.error = "At least 6 characters"
-            isValid = false
-        }
-
-        if (confirmPassword != password) {
-            tilConfirmPassword.isErrorEnabled = true
-            tilConfirmPassword.error = "Passwords don’t match"
-            isValid = false
-        }
-        return isValid
-    }
-
-    private fun hashString(type: String, input: String): String {
+    private fun hashSHA256String(input: String): String {
         val HEX_CHARS = "0123456789ABCDEF"
         val bytes = MessageDigest
-            .getInstance(type)
+            .getInstance("SHA256")
             .digest(input.toByteArray())
-        val result = StringBuilder(bytes.size * 2)
-
-        bytes.forEach {
-            val i = it.toInt()
-            result.append(HEX_CHARS[i shr 4 and 0x0f])
-            result.append(HEX_CHARS[i and 0x0f])
+        return buildString {
+            bytes.forEach {
+                val i = it.toInt()
+                append(HEX_CHARS[i shr 4 and 0x0f])
+                append(HEX_CHARS[i and 0x0f])
+            }
         }
-
-        return result.toString()
     }
 
     private fun registerUser(fullName: String, email: String, password: String) {
@@ -210,10 +249,9 @@ class RegisterActivity : AppCompatActivity() {
             Date()
         )
 
-        val hashedPassword = hashString("SHA-256", password)
+        val hashedPassword = hashSHA256String(password)
         val user = User(fullName, email, hashedPassword, currentTime)
 
-        val  mBtnRegister = findViewById<MaterialButton>(R.id.mBtn_register)
         mBtnRegister.isEnabled = false
         CoroutineScope(Dispatchers.IO).launch {
             database.child("users").child(uid).setValue(user)
