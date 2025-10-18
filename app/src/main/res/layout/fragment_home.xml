@@ -97,7 +97,7 @@
             android:textColor="@color/text_primary_900"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mcv_weather_information"
+            app:layout_constraintTop_toBottomOf="@id/mcv_weather_information" />
 
         <!--        <HorizontalScrollView-->
         <!--            android:layout_width="match_parent"-->
