@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -37,12 +38,27 @@ android {
 
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 }
 
 dependencies {
+    implementation(libs.androidx.runtime.livedata)
+    val composeBom = platform("androidx.compose:compose-bom:2025.10.00")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("androidx.compose.material3:material3:1.4.0")
+    implementation("androidx.compose.ui:ui:1.9.3")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.4")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.4")
+    implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("com.google.android.material:material:1.13.0")
+    implementation("com.google.gms:google-services:4.4.4")
+    implementation("nl.joery.animatedbottombar:library:1.1.0")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

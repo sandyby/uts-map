@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mcv_fields_card_item"
+    android:layout_width="160dp"
+    android:layout_height="160dp">
+
+    <LinearLayout
+        android:id="@+id/ll_fields_card_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_fields_photo"
+            android:layout_width="160dp"
+            android:layout_height="72dp"
+            android:scaleType="center"
+            android:src="@drawable/sawit_lahan1" />
+
+        <LinearLayout
+            android:id="@+id/ll_fields_name_and_location_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_fields_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="Lahan 1"
+                android:textColor="@color/text_primary_500"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_fields_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_filled_location_on_12_bg_primary_500"
+                android:fontFamily="@font/lato_regular"
+                android:text="Ngabang"
+                android:textColor="@color/text_primary_500"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_fields_desc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fontFamily="@font/lato_regular"
+            android:textStyle=""
+            android:textSize="9sp" />
+
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

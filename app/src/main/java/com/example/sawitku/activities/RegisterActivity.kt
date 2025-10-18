@@ -1,4 +1,4 @@
-package com.example.sawitku
+package com.example.sawitku.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.widget.addTextChangedListener
+import com.example.sawitku.R
 import com.example.sawitku.models.User
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -232,7 +232,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun hashSHA256String(input: String): String {
         val HEX_CHARS = "0123456789ABCDEF"
         val bytes = MessageDigest
-            .getInstance("SHA256")
+            .getInstance("SHA-256")
             .digest(input.toByteArray())
         return buildString {
             bytes.forEach {

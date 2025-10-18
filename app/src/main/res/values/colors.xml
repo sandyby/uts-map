@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FF0000</color>
     <color name="bg_primary_900">#5F6C37</color>
     <color name="bg_primary_800">#343D2A</color>
     <color name="bg_primary_700">#414934</color>
@@ -24,4 +25,6 @@
     <color name="text_200">#E8ECEF</color>
     <color name="text_100">#F8F9FB</color>
     <color name="text_error_900">#dd4336</color>
+    <color name="text_fiery_ocean">#780000</color>
+    <color name="text_fiery_red_sunset_600">#d00000</color>
 </resources>

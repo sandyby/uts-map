@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/tab_home"
+        android:icon="@drawable/ic_filled_home_24_secondary_overlay"
+        android:title="Home" />
+    <item
+        android:id="@+id/tab_fields"
+        android:icon="@drawable/ic_filled_plant_24_secondary_overlay"
+        android:title="Fields" />
+    <item
+        android:id="@+id/tab_activity"
+        android:icon="@drawable/ic_filled_clipboard_text_edit_24_secondary_overlay"
+        android:title="Activity" />
+    <item
+        android:id="@+id/tab_predict"
+        android:icon="@drawable/ic_filled_chart_area_spline_24_secondary_overlay"
+        android:title="Predict" />
+    <item
+        android:id="@+id/tab_profile"
+        android:icon="@drawable/ic_filled_person_24_secondary_overlay"
+        android:title="Profile" />
+
+</menu>

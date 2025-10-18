@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nsv_fragment_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_secondary_900">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fl_notification_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!--        <ImageView-->
+        <!--            android:layout_width=""-->
+        <!--            android:layout_height=""-->
+
+        <LinearLayout
+            android:id="@+id/ll_welcome_msg_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civ_dashboard_profile_picture"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/placeholder_64"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/ll_welcome_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/civ_dashboard_profile_picture"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_welcome_msg_hello"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Hello,"
+                    android:textColor="@color/text_primary_900"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_welcome_msg_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_black"
+                    android:text="John Doe"
+                    android:textColor="@color/text_primary_900"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/cv_notification_badge"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv_weather_information"
+            style="@style/CustomWeatherCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="176dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_welcome_msg_wrapper" />
+
+        <TextView
+            android:id="@+id/tv_fields_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Your Fields"
+            android:textColor="@color/text_primary_900"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mcv_weather_information"
+
+        <!--        <HorizontalScrollView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_height="64dp"-->
+        <!--            android:id="@+id/hsv_fields_overview"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/tv_fields_label"-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_fields_overview"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_fields_label" />
+
+
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/ib_notification_btn"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:layout_marginEnd="16dp"-->
+        <!--            android:background="@drawable/bg_btn_icon"-->
+        <!--            android:contentDescription="Notification Button Icon"-->
+        <!--            android:padding="8dp"-->
+        <!--            android:scaleType="centerInside"-->
+        <!--            android:src="@drawable/ic_filled_notifications_24_white"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

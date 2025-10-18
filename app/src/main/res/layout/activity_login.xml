@@ -20,7 +20,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_bottomOverlay"
-        style="@style/CustomCardViewStyle"
+        style="@style/CustomFormCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="700dp"
         android:layout_marginBottom="31.8dp"
@@ -36,7 +36,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_middleOverlay"
-        style="@style/CustomCardViewStyle"
+        style="@style/CustomFormCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="700dp"
         android:layout_marginBottom="27.05dp"
@@ -51,7 +51,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_topOverlay"
-        style="@style/CustomCardViewStyle"
+        style="@style/CustomFormCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="700dp"
         app:cardBackgroundColor="@color/white"
@@ -164,9 +164,10 @@
                         android:id="@+id/tv_login_error_msg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginVertical="8dp"
                         android:textColor="@color/text_error_900"
-                        android:text="Invalid credentials" />
+                        android:text="The e-mail or password you entered is incorrect!" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -258,7 +259,7 @@
                             android:contentDescription="Google Account"
                             android:padding="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/google_icon_logo" />
+                            android:src="@drawable/ic_google_logo" />
 
                     </LinearLayout>
 
