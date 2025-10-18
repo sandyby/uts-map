@@ -2,6 +2,5 @@
     <string name="app_name">Sawitku</string>
     <string name="login_btn">LOGIN</string>
     <string name="register_btn">REGISTER</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="firebase_database_reference_url">https://sawit-6876f-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
 </resources>

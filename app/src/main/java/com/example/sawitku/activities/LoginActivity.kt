@@ -155,7 +155,7 @@ class LoginActivity : AppCompatActivity() {
         mBtnLogin.isEnabled = false
         val hashedPassword = hashSHA256String(password)
 
-        FirebaseDatabase.getInstance("https://sawit-6876f-default-rtdb.asia-southeast1.firebasedatabase.app/")
+        FirebaseDatabase.getInstance(applicationContext.getString(R.string.firebase_database_reference_url))
             .getReference("users")
             .orderByChild("email")
             .equalTo(email)
