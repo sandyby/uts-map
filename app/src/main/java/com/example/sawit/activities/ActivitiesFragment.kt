@@ -1,60 +1,125 @@
 package com.example.sawit.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.sawit.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sawit.adapters.ActivityAdapter
+import com.example.sawit.databinding.FragmentActivitiesBinding
+import com.example.sawit.viewmodels.ActivityViewModel
+import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ActivityFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ActivitiesFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentActivitiesBinding? = null
+    private val binding get() = _binding!!
+
+    // Menggunakan ActivityViewModel untuk mendapatkan data hardcoded
+    private val viewModel: ActivityViewModel by viewModels()
+    private lateinit var activityAdapter: ActivityAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_activities, container, false)
+    ): View {
+        _binding = FragmentActivitiesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ActivityFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ActivitiesFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupRecyclerView()
+        setupTabLayout()
+        observeActivities()
+        setupFabListener() // Memanggil listener untuk FAB
+    }
+
+    private fun setupFabListener() {
+        binding.fabAddActivity.setOnClickListener {
+            // Intent untuk membuka CreateEditActivity dalam mode "New"
+            val intent = Intent(requireActivity(), CreateEditActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setupRecyclerView() {
+        // Inisialisasi adapter dengan listener demo
+        activityAdapter = ActivityAdapter(
+            onCheckboxClicked = { activity, isChecked ->
+                val status = if (isChecked) "Completed" else "Planned"
+                Toast.makeText(context, "${activity.fieldName} status changed to $status (Demo)", Toast.LENGTH_SHORT).show()
+                // Logika untuk memindahkan item antar list bisa ditambahkan di sini
+            },
+            onEditClicked = { activity ->
+                // Membuka CreateEditActivity dengan data untuk mode "Edit"
+                val intent = Intent(requireActivity(), CreateEditActivity::class.java).apply {
+                    putExtra(CreateEditActivity.EXTRA_ACTIVITY, activity)
+                }
+                startActivity(intent)
+            },
+            onDeleteClicked = { activity ->
+                Toast.makeText(context, "Delete ${activity.fieldName} (Demo)", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        binding.recyclerViewActivities.apply {
+            adapter = activityAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    private fun observeActivities() {
+        // Mengamati data hardcoded dari ViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.activities.collect { allActivities ->
+                    // Saat data pertama kali datang, filter dan tampilkan tab 'Planned' (tab default)
+                    if (binding.tabLayout.selectedTabPosition == 0) {
+                        val plannedActivities = allActivities.filter { it.status == "planned" }
+                        activityAdapter.submitList(plannedActivities)
+                    } else {
+                        val completedActivities = allActivities.filter { it.status == "completed" }
+                        activityAdapter.submitList(completedActivities)
+                    }
                 }
             }
+        }
+    }
+
+    private fun setupTabLayout() {
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                // Dapatkan daftar lengkap dari ViewModel setiap kali tab diganti
+                val allActivities = viewModel.activities.value
+                when (tab?.position) {
+                    0 -> { // Tab "Planned"
+                        val plannedActivities = allActivities.filter { it.status == "planned" }
+                        activityAdapter.submitList(plannedActivities)
+                    }
+
+                    1 -> { // Tab "Completed"
+                        val completedActivities = allActivities.filter { it.status == "completed" }
+                        activityAdapter.submitList(completedActivities)
+                    }
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
