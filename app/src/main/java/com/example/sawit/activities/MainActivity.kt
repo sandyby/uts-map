@@ -23,6 +23,20 @@ import kotlinx.coroutines.launch
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class MainActivity : AppCompatActivity() {
+    /**
+     * ini merupakan activity utama kita yang berguna untuk mengatur tampilan utama setelah pengguna berhasil masuk ke dalam aplikasi di dashboard
+     *
+     * - menampilkan fragment yang sesuai berdasarkan tab animatedbottombar yang dipilih oleh user
+     * - mengatur tampilan header atas (TopHeaderFragment) yang menyesuaikan judul halaman
+     * - mengatur animasi transisi antar-fragment agar transisi jadi smooth
+     * - menampilkan indikator loading saat data awal sedang dimuat (dengan sengaja).
+     *
+     * kami memilih untuk menggunakan beberapa fragment (HomeFragment, FieldsFragment, dsb.)
+     * agar setiap fitur utama dapat dipisahkan dengan jelas dan mudah dikelola secara modular.
+     *
+     * selain itu, penggunaan AnimatedBottomBar memberi kami efek animasi modern pada navigasi bawah,
+     * menggantikan BottomNavigationView standar dengan tampilan yang lebih menarik.
+     */
     private lateinit var bottomBar: AnimatedBottomBar
     private lateinit var topHeaderFragment: TopHeaderFragment
     private lateinit var homeFragment: HomeFragment

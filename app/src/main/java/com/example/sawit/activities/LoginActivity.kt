@@ -23,21 +23,43 @@ import com.google.firebase.database.FirebaseDatabase
 import java.security.MessageDigest
 
 class LoginActivity : AppCompatActivity() {
+    /*
+    * declaration untuk variable-variable lateinit yang akan digunakan
+    * sebagai reference nantinya untuk memanipulasi value seperti textviews,
+    * textinputedittexts, button, dan lainnya untuk kebutuhan flow login.
+    * */
     private lateinit var tietEmail: TextInputEditText
     private lateinit var tietPassword: TextInputEditText
     private lateinit var tilEmail: TextInputLayout
     private lateinit var tilPassword: TextInputLayout
     private lateinit var mBtnLogin: MaterialButton
-    private var isEmailValid = false
-    private var isPasswordValid = false
     private lateinit var tvLoginErrorMsg: TextView
     private lateinit var tvSwitchRegister: TextView
 
+    /*
+    * declaration untuk variable-variable logical untuk keperluan validation
+    * */
+    private var isEmailValid = false
+    private var isPasswordValid = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        /*
+        * disable dark mode secara global agar tidak terjadi hal yang tidak diinginkan seperti berubahnya warna akibat
+        * property tint tiba-tiba
+        * */
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        /*
+        * deklarasi variable untuk menampung sharedpreferences, yakni segala informasi
+        * yang berkaitan dengan user settings, preference tertentu, session atau status login,
+        * dan masih banyak lagi yang dapat disimpan dalam tipe data tersebut dalam bentuk key-value pair.
+        *
+        * contohnya di bawah ini, kami menyimpan email jika sudah ada sebelumnya, berarti menandakan user tersebut
+        * sudah login sebelumnya, agar tidak perlu melakukan login lagi. ini bisa dikembangkan lebih jauh lagi kedepannya jika kami
+        * memutuskan untuk meningkatkan UX dari segi session control, dan juga keamanan seperti session timeout, dsb
+        * */
         val sharedPrefs = getSharedPreferences("UserSession", MODE_PRIVATE)
         val email = sharedPrefs.getString("email", null)
 
@@ -55,25 +77,27 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        /*
+        * initialize komponen Ui berupa texteditinputtexts dan juga textinputlayouts dari layout xml activity_login, seperti yang diset
+        * oleh method setcontentview di atas sebelumnya
+        *
+        * ada juga onclicklistener untuk button login dan juga semacam link guna untuk melempar user ke register page
+        *
+        * dan juga menghandle feedback dari validation berupa error message
+        * */
+
         tilEmail = findViewById(R.id.til_email_field)
         tietEmail = findViewById(R.id.tiet_email_field)
-
         tilPassword = findViewById(R.id.til_password_field)
         tietPassword = findViewById(R.id.tiet_password_field)
-
-        mBtnLogin = findViewById<MaterialButton>(R.id.mBtn_login)
-
         tietEmail.addTextChangedListener(EmailWatcher())
         tietPassword.addTextChangedListener(PasswordWatcher())
-
-        tvLoginErrorMsg = findViewById<TextView>(R.id.tv_login_error_msg)
-
         tvSwitchRegister = findViewById<TextView>(R.id.tv_switchRegister)
         tvSwitchRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
-
+        mBtnLogin = findViewById<MaterialButton>(R.id.mBtn_login)
         mBtnLogin.setOnClickListener {
             tvLoginErrorMsg.visibility = View.GONE
             val email = tietEmail.text.toString().trim()
@@ -81,7 +105,13 @@ class LoginActivity : AppCompatActivity() {
             Log.d("LoginActivity", "$email $password")
             userLogin(email, password)
         }
+        tvLoginErrorMsg = findViewById<TextView>(R.id.tv_login_error_msg)
     }
+
+    /*
+    * kita mengaplikasikan textwatcher untuk custom functions yang kami buat untuk validasi dan pengawasan user input,
+    * khususnya pada email dan juga password
+    * */
 
     private inner class EmailWatcher : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -128,16 +158,19 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * logika state button login untuk meningkatkan UX
+    * */
     private fun updateLoginButtonState() {
-        mBtnLogin.isEnabled =
-            isEmailValid && isPasswordValid
+        mBtnLogin.isEnabled = isEmailValid && isPasswordValid
     }
 
+    /*
+    * custom sha256 hash untuk password agar aman tersimpan di database
+    * */
     private fun hashSHA256String(input: String): String {
         val HEX_CHARS = "0123456789ABCDEF"
-        val bytes = MessageDigest
-            .getInstance("SHA-256")
-            .digest(input.toByteArray())
+        val bytes = MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
         return buildString {
             bytes.forEach {
                 val i = it.toInt()
@@ -151,11 +184,15 @@ class LoginActivity : AppCompatActivity() {
         mBtnLogin.isEnabled = false
         val hashedPassword = hashSHA256String(password)
 
+        /*
+        * retrieve instance dan referensi dengan realtime database dari firebase, sehingga menjalankan query dengan aman
+        *
+        * untuk url dari database itu sendiri awalnya kami ingin simpan ke dalam file yang aman, entah itu local.properties
+        * ataupun secrets, tetapi setelah membaca saran dari beberapa user di forum, seperti tidak terlalu bermasalah 'jika' memang
+        * terlanjur dipush secara publik
+        * */
         FirebaseDatabase.getInstance(applicationContext.getString(R.string.firebase_database_reference_url))
-            .getReference("users")
-            .orderByChild("email")
-            .equalTo(email)
-            .get()
+            .getReference("users").orderByChild("email").equalTo(email).get()
             .addOnSuccessListener { snapshot ->
                 Log.d("LoginActivity", "snapshot: $snapshot")
                 if (snapshot.exists()) {
@@ -163,6 +200,12 @@ class LoginActivity : AppCompatActivity() {
                     snapshot.children.forEach { data ->
                         val storedPassword = data.child("password").getValue(String::class.java)
 
+                        /*
+                        * di bagian ini sharedpreferences disimpan setelah user berhasil login.
+                        *
+                        * session tersebut akan expired atau time out jika user menghapus cache atau data dari
+                        * aplikasi secara lokal
+                        * */
                         if (storedPassword == hashedPassword) {
                             val sharedPrefs = getSharedPreferences("UserSession", MODE_PRIVATE)
                             sharedPrefs.edit().apply {
@@ -190,8 +233,7 @@ class LoginActivity : AppCompatActivity() {
                     tvLoginErrorMsg.visibility = View.VISIBLE
                     mBtnLogin.isEnabled = true
                 }
-            }
-            .addOnFailureListener {
+            }.addOnFailureListener {
                 Log.d("LoginActivity", "Error")
                 mBtnLogin.isEnabled = true
             }

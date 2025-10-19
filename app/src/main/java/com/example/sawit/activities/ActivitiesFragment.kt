@@ -19,7 +19,14 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
 
 class ActivitiesFragment : Fragment() {
-
+    /**
+     * menampilkan daftar aktivitas yang berkaitan dengan setiap field yang telah terdaftar oleh seorang user
+     *
+     * - menampilkan daftar aktivitas yang sedang direncanakan (planned) maupun sudah selesai (completed).
+     * - memungkinkan pengguna menambah aktivitas baru melalui tombol FAB
+     * - memfasilitasi aksi edit dan hapus aktivitas (sementara masih berupa demo/toast).
+     * - memperbarui tampilan data secara real-time menggunakan ViewModel dan Kotlin Flow.
+     */
     private var _binding: FragmentActivitiesBinding? = null
     private val binding get() = _binding!!
 
@@ -54,7 +61,11 @@ class ActivitiesFragment : Fragment() {
         activityAdapter = ActivityAdapter(
             onCheckboxClicked = { activity, isChecked ->
                 val status = if (isChecked) "Completed" else "Planned"
-                Toast.makeText(context, "${activity.fieldName} status changed to $status (Demo)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "${activity.fieldName} status changed to $status (Demo)",
+                    Toast.LENGTH_SHORT
+                ).show()
             },
             onEditClicked = { activity ->
                 val intent = Intent(requireActivity(), CreateEditActivity::class.java).apply {
@@ -63,7 +74,8 @@ class ActivitiesFragment : Fragment() {
                 startActivity(intent)
             },
             onDeleteClicked = { activity ->
-                Toast.makeText(context, "Delete ${activity.fieldName} (Demo)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Delete ${activity.fieldName} (Demo)", Toast.LENGTH_SHORT)
+                    .show()
             }
         )
 
@@ -105,6 +117,7 @@ class ActivitiesFragment : Fragment() {
                     }
                 }
             }
+
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })

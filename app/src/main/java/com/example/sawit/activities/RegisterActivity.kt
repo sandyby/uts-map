@@ -29,23 +29,32 @@ import java.util.Date
 import java.util.Locale
 
 class RegisterActivity : AppCompatActivity() {
+    /*
+     * activity ini digunakan untuk menghandle proses register user baru, mirip flownya dengan loginactivity
+     * tujuannya agar user dapat meninput data seperti nama lengkap, email, dan password, lalu disimpan ke Firebase Realtime Database.
+     *
+     * validasi input dilakukan langsung di tiap textinputedittext lewat TextWatcher,
+     * jadi user langsung tahu kalau ada kesalahan input sebelum klik tombol register.
+     *
+     * untuk keamanan, password kami memakai hash SHA-256 sebelum dikirim ke database.
+     * ini penting agar password tidak tersimpan dalam bentuk asli dan terjadi data leak, dsb.
+     *
+     * ketika register sukses, user langsung diarahkan ke halaman login.
+     * */
     private lateinit var tietFullName: TextInputEditText
     private lateinit var tietEmail: TextInputEditText
     private lateinit var tietPassword: TextInputEditText
     private lateinit var tietConfirmPassword: TextInputEditText
-
     private lateinit var tilFullName: TextInputLayout
     private lateinit var tilEmail: TextInputLayout
     private lateinit var tilPassword: TextInputLayout
     private lateinit var tilConfirmPassword: TextInputLayout
     private lateinit var mBtnRegister: MaterialButton
-
     private lateinit var database: DatabaseReference
     private var isFullNameValid = false
     private var isEmailValid = false
     private var isPasswordValid = false
     private var isConfirmPasswordValid = false
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,10 +86,14 @@ class RegisterActivity : AppCompatActivity() {
         tietPassword.addTextChangedListener(PasswordWatcher())
         tietConfirmPassword.addTextChangedListener(ConfirmPasswordWatcher())
 
-//        database = FirebaseDatabase.getInstance().reference
         database =
             FirebaseDatabase.getInstance("https://sawit-6876f-default-rtdb.asia-southeast1.firebasedatabase.app/").reference
 
+
+        /*
+        * untuk saat ini, kami lebih banyak menggunakan intent dan belum menggunakan jetpack nav atau
+        * component navigation lainnya demi kepraktisan. namun kedepannya akan digunakan.
+        * */
         val tvSwitchLogin = findViewById<TextView>(R.id.tv_switchLogin)
         tvSwitchLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -250,6 +263,11 @@ class RegisterActivity : AppCompatActivity() {
         val hashedPassword = hashSHA256String(password)
         val user = User(fullName, email, hashedPassword, currentTime)
 
+
+        /*
+        * kondisi saat loading menunggu status register, dijalankan menggunakan coroutinescope, untuk
+        * memanfaatkan fitur async dan juga lifecycle managementnya
+        * */
         mBtnRegister.isEnabled = false
         CoroutineScope(Dispatchers.IO).launch {
             database.child("users").child(uid).setValue(user)
