@@ -11,6 +11,7 @@
     <color name="bg_primary_400">#A4AC85</color>
     <color name="bg_secondary_900">#FEFADF</color>
     <color name="bg_secondary_overlay_2">#D4D4D4</color>
+    <color name="bg_secondary_overlay_3">#D9D9D9</color>
     <color name="bg_accent_900">#BC6C25</color>
     <color name="bg_accent_500">#DCA15D</color>
     <color name="text_primary_900">#273617</color>

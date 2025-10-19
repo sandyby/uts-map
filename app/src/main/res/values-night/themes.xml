@@ -30,6 +30,15 @@
         <item name="cardElevation">0dp</item>
     </style>
 
+    <style name="CustomFieldsDetailCardItemViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/activity_card_item_custom_corners</item>
+        <item name="background">@color/white</item>
+        <item name="strokeColor">@color/bg_secondary_overlay_3</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="cardElevation">8dp</item>
+    </style>
+
     <style name="CustomTopHeaderCardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">@style/top_header_card_custom_corners</item>
         <item name="strokeColor">@android:color/transparent</item>

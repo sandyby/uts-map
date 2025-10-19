@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_fragments_fields_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_secondary_900">
+
+    <LinearLayout
+        android:id="@+id/ll_detail_fragment_header"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/bg_secondary_900"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:clickable="true"
+            android:contentDescription="Back"
+            android:focusable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_filled_keyboard_backspace_24_text_primary_900" />
+
+        <TextView
+            android:id="@+id/tv_field_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Field Name"
+            android:textColor="@color/text_primary_900"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_fields_location_map"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="bottom"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sawit_lahan_2"
+        app:layout_anchor="@id/ll_detail_fragment_header"
+        app:layout_anchorGravity="bottom" />
+
+    <LinearLayout
+        android:id="@+id/ll_detail_fragment_content_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_anchor="@id/iv_fields_location_map"
+        app:layout_anchorGravity="bottom">
+
+        <com.example.sawit.utils.FieldsTabView
+            android:id="@+id/ftv_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@+id/fl_fields_tabs_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="16dp"
+            app:layout_anchor="@id/ftv_fields"
+            app:layout_anchorGravity="bottom">
+
+            <include
+                android:id="@+id/layout_details"
+                layout="@layout/fields_tabs_details"
+                android:visibility="visible" />
+
+            <!-- Statistics Layout -->
+            <include
+                android:id="@+id/layout_statistics"
+                layout="@layout/fields_tabs_statistics"
+                android:visibility="gone" />
+
+            <!--            <ViewStub-->
+            <!--                android:id="@+id/vs_details_tab"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:inflatedId="@+id/inflated_details_tab"-->
+            <!--                android:layout="@layout/fields_tabs_details" />-->
+
+            <!--            <ViewStub-->
+            <!--                android:id="@+id/vs_statistics_tab"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:inflatedId="@+id/inflated_statistics_tab"-->
+            <!--                android:layout="@layout/fields_tabs_statistics" />-->
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/efab_fields"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Add New Field"
+        android:text="Add New Field"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:backgroundTint="@color/bg_primary_500"
+        app:icon="@drawable/ic_filled_add_24_white"
+        app:iconSize="28dp"
+        app:iconTint="@color/white"
+        app:showMotionSpec="@null" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

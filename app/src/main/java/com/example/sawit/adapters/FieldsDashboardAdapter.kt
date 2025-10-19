@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sawit.R
 import com.example.sawit.models.Field
 
-class FieldsAdapter(
+class FieldsDashboardAdapter(
     private val onClick: (Field) -> Unit
 //    private val fieldsData: ArrayList<Field>
 ) :
-    ListAdapter<Field, FieldsAdapter.ViewHolder>(FieldDiffCallback()) {
+    ListAdapter<Field, FieldsDashboardAdapter.ViewHolder>(FieldDiffCallback()) {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivFieldPhoto: ImageView = view.findViewById<ImageView>(R.id.iv_fields_photo)
         val tvFieldName: TextView = view.findViewById<TextView>(R.id.tv_fields_name)
@@ -30,7 +30,7 @@ class FieldsAdapter(
                 ivFieldPhoto.setImageResource(R.drawable.sawit_lahan1)
             else
                 ivFieldPhoto.setImageResource(R.drawable.placeholder_200x100)
-//            itemView.setOnClickListener { onClick(field) }
+            itemView.setOnClickListener { onClick(field) }
         }
     }
 
@@ -39,7 +39,8 @@ class FieldsAdapter(
         viewType: Int
     ): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.fields_card_item_dashboard, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.fields_card_item_dashboard, parent, false)
         return ViewHolder(view)
     }
 

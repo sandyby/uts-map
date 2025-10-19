@@ -14,7 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sawit.R
-import com.example.sawit.adapters.FieldsAdapter
+import com.example.sawit.adapters.FieldsDashboardAdapter
 import com.example.sawit.databinding.FragmentHomeBinding
 import com.example.sawit.ui.NotificationIconWithBadge
 import com.example.sawit.utils.HorizontalSpaceItemDecoration
@@ -35,8 +35,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-//        val view = inflater.inflate(R.layout.fragment_home, container, false)
-//        val composeView = view.findViewById<ComposeView>(R.id.cv_notification_badge)
 
         val composeView = binding.cvNotificationBadge
         composeView.setContent {
@@ -58,10 +56,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = FieldsAdapter { field ->
+        val adapter = FieldsDashboardAdapter { field ->
             Toast.makeText(context, "clicked: ${field.fieldName}", Toast.LENGTH_SHORT).show()
         }
-
 
         binding.rvFieldsOverview.apply {
             this.adapter = adapter
