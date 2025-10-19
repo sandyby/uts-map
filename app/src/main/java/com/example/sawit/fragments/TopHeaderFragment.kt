@@ -1,9 +1,9 @@
 package com.example.sawit.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.example.sawit.R
 
 class TopHeaderFragment : Fragment(R.layout.fragment_top_header) {

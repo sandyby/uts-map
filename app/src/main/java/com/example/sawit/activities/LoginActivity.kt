@@ -22,6 +22,13 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.FirebaseDatabase
 import java.security.MessageDigest
 import kotlin.apply
+import kotlin.collections.forEach
+import kotlin.collections.getValue
+import kotlin.text.buildString
+import kotlin.text.get
+import kotlin.text.isEmpty
+import kotlin.text.toByteArray
+import kotlin.text.trim
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var tietEmail: TextInputEditText
