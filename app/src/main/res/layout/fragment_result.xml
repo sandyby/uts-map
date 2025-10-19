@@ -79,7 +79,6 @@
                         android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/textPrediksiPanen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="150 ton"
@@ -126,7 +125,6 @@
                             android:gravity="center" />
 
                         <TextView
-                            android:id="@+id/textRentang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="140 - 160 ton"
@@ -164,7 +162,6 @@
                             android:gravity="center" />
 
                         <TextView
-                            android:id="@+id/textEfisiensi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5.5 ton/ha"

@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentId
 import kotlinx.parcelize.Parcelize
 import java.util.Date
 
-@Parcelize // Anotasi untuk implementasi Parcelable otomatis
+@Parcelize
 data class Activity(
     @DocumentId
     val id: String = "",
@@ -14,5 +14,5 @@ data class Activity(
     val date: Date = Date(),
     val notes: String = "",
     val status: String = "planned"
-) : Parcelable // Mengimplementasikan Parcelable
+) : Parcelable
 

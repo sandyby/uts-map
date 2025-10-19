@@ -23,7 +23,6 @@ class ActivitiesFragment : Fragment() {
     private var _binding: FragmentActivitiesBinding? = null
     private val binding get() = _binding!!
 
-    // Menggunakan ActivityViewModel untuk mendapatkan data hardcoded
     private val viewModel: ActivityViewModel by viewModels()
     private lateinit var activityAdapter: ActivityAdapter
 
@@ -41,27 +40,23 @@ class ActivitiesFragment : Fragment() {
         setupRecyclerView()
         setupTabLayout()
         observeActivities()
-        setupFabListener() // Memanggil listener untuk FAB
+        setupFabListener()
     }
 
     private fun setupFabListener() {
         binding.fabAddActivity.setOnClickListener {
-            // Intent untuk membuka CreateEditActivity dalam mode "New"
             val intent = Intent(requireActivity(), CreateEditActivity::class.java)
             startActivity(intent)
         }
     }
 
     private fun setupRecyclerView() {
-        // Inisialisasi adapter dengan listener demo
         activityAdapter = ActivityAdapter(
             onCheckboxClicked = { activity, isChecked ->
                 val status = if (isChecked) "Completed" else "Planned"
                 Toast.makeText(context, "${activity.fieldName} status changed to $status (Demo)", Toast.LENGTH_SHORT).show()
-                // Logika untuk memindahkan item antar list bisa ditambahkan di sini
             },
             onEditClicked = { activity ->
-                // Membuka CreateEditActivity dengan data untuk mode "Edit"
                 val intent = Intent(requireActivity(), CreateEditActivity::class.java).apply {
                     putExtra(CreateEditActivity.EXTRA_ACTIVITY, activity)
                 }
@@ -79,11 +74,9 @@ class ActivitiesFragment : Fragment() {
     }
 
     private fun observeActivities() {
-        // Mengamati data hardcoded dari ViewModel
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.activities.collect { allActivities ->
-                    // Saat data pertama kali datang, filter dan tampilkan tab 'Planned' (tab default)
                     if (binding.tabLayout.selectedTabPosition == 0) {
                         val plannedActivities = allActivities.filter { it.status == "planned" }
                         activityAdapter.submitList(plannedActivities)
@@ -99,15 +92,14 @@ class ActivitiesFragment : Fragment() {
     private fun setupTabLayout() {
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                // Dapatkan daftar lengkap dari ViewModel setiap kali tab diganti
                 val allActivities = viewModel.activities.value
                 when (tab?.position) {
-                    0 -> { // Tab "Planned"
+                    0 -> {
                         val plannedActivities = allActivities.filter { it.status == "planned" }
                         activityAdapter.submitList(plannedActivities)
                     }
 
-                    1 -> { // Tab "Completed"
+                    1 -> {
                         val completedActivities = allActivities.filter { it.status == "completed" }
                         activityAdapter.submitList(completedActivities)
                     }

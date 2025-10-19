@@ -1,7 +1,6 @@
 package com.example.sawit.utils
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater

@@ -51,10 +51,6 @@ class FieldsDashboardAdapter(
         holder.bind(getItem(position))
     }
 
-//    override fun getItemCount(): Int {
-//        return fieldsData.size
-//    }
-
     class FieldDiffCallback : DiffUtil.ItemCallback<Field>() {
         override fun areItemsTheSame(oldItem: Field, newItem: Field): Boolean {
             return oldItem.fieldId == newItem.fieldId

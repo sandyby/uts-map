@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sawit.R
 import com.example.sawit.models.Field
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 class FieldsFieldsAdapter(
     private val onClick: (Field) -> Unit,
@@ -22,8 +21,6 @@ class FieldsFieldsAdapter(
         val ivFieldPhoto: ImageView = view.findViewById(R.id.iv_fields_photo)
         val tvFieldName: TextView = view.findViewById(R.id.tv_fields_name)
         val tvFieldLocation: TextView = view.findViewById(R.id.tv_fields_location)
-
-//        val efabAddNewFieldBtn: ExtendedFloatingActionButton = view.findViewById(R.id.efab_fields)
         val ibDeleteBtn: ImageButton = view.findViewById(R.id.ib_delete_field_btn)
 
         fun bind(field: Field) {
@@ -55,7 +52,6 @@ class FieldsFieldsAdapter(
     ) {
         holder.bind(getItem(position))
     }
-
 
     class FieldDiffCallback : DiffUtil.ItemCallback<Field>() {
         override fun areItemsTheSame(oldItem: Field, newItem: Field): Boolean {

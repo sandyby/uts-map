@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nsv_fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_secondary_900"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fl_notification_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
@@ -31,7 +29,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:id="@+id/ll_welcome_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -40,7 +37,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tv_welcome_msg_hello"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_regular"
@@ -49,7 +45,6 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tv_welcome_msg_full_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_black"
@@ -65,9 +60,9 @@
                 android:layout_weight="1" />
 
             <androidx.compose.ui.platform.ComposeView
-                android:id="@+id/cv_notification_badge"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:id="@+id/cv_notification"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
@@ -77,8 +72,8 @@
             style="@style/CustomWeatherCardViewStyle"
             android:layout_width="match_parent"
             android:layout_height="176dp"
-            app:cardBackgroundColor="#709ED2"
             android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#709ED2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ll_welcome_msg_wrapper">
@@ -102,8 +97,8 @@
                     android:id="@+id/iv_location_icon"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
-                    android:scaleType="centerCrop"
                     android:layout_marginTop="4dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/ic_filled_location_on_24_white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -132,10 +127,10 @@
                     android:text="Sunny"
                     android:textColor="@color/white"
                     android:textSize="24sp"
-                    app:layout_constraintEnd_toStartOf="@id/iv_weather_icon"
-                    app:layout_constraintStart_toEndOf="@id/tv_weather_temperature"
                     app:layout_constraintBottom_toBottomOf="@id/tv_weather_temperature"
-                    app:layout_constraintHorizontal_bias="0.5" />
+                    app:layout_constraintEnd_toStartOf="@id/iv_weather_icon"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/tv_weather_temperature" />
 
                 <TextView
                     android:id="@+id/tv_weather_location"
@@ -177,7 +172,6 @@
             app:layout_constraintTop_toBottomOf="@id/mcv_weather_information" />
 
         <TextView
-            android:id="@+id/tv_fields_view_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_filled_chevron_right_24_text_primary_900"
@@ -211,7 +205,6 @@
 
 
         <TextView
-            android:id="@+id/tv_activities_view_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_filled_chevron_right_24_text_primary_900"
@@ -223,7 +216,6 @@
             app:layout_constraintTop_toTopOf="@id/tv_activities_label" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/mcv_activities_overview"
             style="@style/CustomActivitiesCardViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -241,14 +233,12 @@
                 android:paddingVertical="8dp">
 
                 <LinearLayout
-                    android:id="@+id/ll_activity_timeline_item_tomorrow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <com.github.vipulasri.timelineview.TimelineView
-                        android:id="@+id/timeline_tomorrow"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         app:endLineColor="@color/bg_primary_500"
@@ -259,7 +249,6 @@
                         app:startLineColor="@android:color/transparent" />
 
                     <TextView
-                        android:id="@+id/tv_timeline_date"
                         android:layout_width="72dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="8dp"
@@ -268,7 +257,6 @@
                         android:textSize="12sp" />
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_activities_timeline_item_tomorrow"
                         style="@style/CustomActivitiesCardItemViewStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -278,7 +266,6 @@
                         android:backgroundTint="@color/text_primary_900">
 
                         <LinearLayout
-                            android:id="@+id/ll_activities_timeline_item_content"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -307,7 +294,6 @@
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/tv_activities_action"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
@@ -322,7 +308,6 @@
                             </LinearLayout>
 
                             <ImageButton
-                                android:id="@+id/ib_activity_view_detail_1"
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:background="@android:color/transparent"
@@ -339,14 +324,12 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_activity_timeline_item_today"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <com.github.vipulasri.timelineview.TimelineView
-                        android:id="@+id/timeline_today"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         app:endLineColor="@color/bg_primary_500"
@@ -358,7 +341,6 @@
                         app:startLineStyle="dashed" />
 
                     <TextView
-                        android:id="@+id/tv_timeline_date_2"
                         android:layout_width="72dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="8dp"
@@ -368,7 +350,6 @@
 
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_activities_timeline_item_today"
                         style="@style/CustomActivitiesCardItemViewStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -379,7 +360,6 @@
 
 
                         <LinearLayout
-                            android:id="@+id/ll_activities_timeline_item_content_2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -393,7 +373,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/tv_activities_field_name_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:alpha="0.8"
@@ -407,7 +386,6 @@
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/tv_activities_action_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
@@ -422,7 +400,6 @@
                             </LinearLayout>
 
                             <ImageButton
-                                android:id="@+id/ib_activity_view_detail_2"
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:background="@android:color/transparent"
@@ -437,14 +414,12 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_activity_timeline_item_past"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <com.github.vipulasri.timelineview.TimelineView
-                        android:id="@+id/timeline_past"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         app:endLineColor="@android:color/transparent"
@@ -456,7 +431,6 @@
                         app:startLineStyle="normal" />
 
                     <TextView
-                        android:id="@+id/tv_timeline_date_3"
                         android:layout_width="72dp"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="8dp"
@@ -465,7 +439,6 @@
                         android:textSize="12sp" />
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/mcv_activities_timeline_item_past"
                         style="@style/CustomActivitiesCardItemViewStyle"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -476,7 +449,6 @@
 
 
                         <LinearLayout
-                            android:id="@+id/ll_activities_timeline_item_content_3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center_vertical"
@@ -490,7 +462,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/tv_activities_field_name_3"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:alpha="0.8"
@@ -504,7 +475,6 @@
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
-                                    android:id="@+id/tv_activities_action_3"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:ellipsize="end"
@@ -519,7 +489,6 @@
                             </LinearLayout>
 
                             <ImageButton
-                                android:id="@+id/ib_activity_view_detail_3"
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:background="@android:color/transparent"

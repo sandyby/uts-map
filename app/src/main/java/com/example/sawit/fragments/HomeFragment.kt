@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val composeView = binding.cvNotificationBadge
+        val composeView = binding.cvNotification
         composeView.setContent {
             val notificationCount by notificationViewModel.notificationCount.observeAsState(0)
 

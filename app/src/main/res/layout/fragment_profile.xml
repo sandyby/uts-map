@@ -16,7 +16,6 @@
 
     <!-- KONTEN UTAMA PROFILE -->
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nsv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -52,7 +51,6 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_edit_profile_pic_container"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 app:cardBackgroundColor="#FFFFFF"
@@ -62,7 +60,6 @@
                 app:layout_constraintEnd_toEndOf="@+id/cv_profile_image">
 
                 <ImageButton
-                    android:id="@+id/btn_edit_profile_pic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@android:color/transparent"
@@ -152,7 +149,6 @@
 
                 <!-- Label Menu -->
                 <TextView
-                    android:id="@+id/tv_menu_label_edit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -167,7 +163,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/item_change_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
@@ -197,7 +192,6 @@
 
                 <!-- Label Menu -->
                 <TextView
-                    android:id="@+id/tv_menu_label_password"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -212,7 +206,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
-                android:id="@+id/item_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
@@ -243,7 +236,6 @@
 
                 <!-- Label Menu -->
                 <TextView
-                    android:id="@+id/tv_menu_label_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"

@@ -22,7 +22,6 @@ import java.util.Locale
 
 class CreateEditActivity : AppCompatActivity() {
 
-    // PERBAIKAN: Menggunakan spasi, bukan titik
     private lateinit var binding: ActivityCreateEditBinding
     private val calendar = Calendar.getInstance()
     private val fieldViewModel: FieldViewModel by viewModels()
@@ -39,7 +38,6 @@ class CreateEditActivity : AppCompatActivity() {
         binding = ActivityCreateEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Cek apakah ada data yang dikirim untuk mode edit
         if (intent.hasExtra(EXTRA_ACTIVITY)) {
             currentActivity = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 intent.getParcelableExtra(EXTRA_ACTIVITY, Activity::class.java)
@@ -55,14 +53,12 @@ class CreateEditActivity : AppCompatActivity() {
         setupActivityTypeDropdown()
         observeFields()
 
-        // Jika dalam mode edit, isi form dengan data yang ada
         if (isEditMode) {
             currentActivity?.let { populateForm(it) }
         }
     }
 
     private fun setupUI() {
-        // Ubah judul berdasarkan mode (New/Edit)
         if (isEditMode) {
             binding.textViewTitle.text = "Edit Activity"
         } else {
@@ -71,7 +67,6 @@ class CreateEditActivity : AppCompatActivity() {
     }
 
     private fun populateForm(activity: Activity) {
-        // Mengisi setiap field di form
         binding.autoCompleteField.setText(activity.fieldName, false) // false agar tidak memfilter
         binding.autoCompleteActivityType.setText(activity.activityType, false)
         calendar.time = activity.date
@@ -80,7 +75,7 @@ class CreateEditActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() {
-        binding.buttonBack.setOnClickListener {
+        binding.ibBackBtn.setOnClickListener {
             finish()
         }
         binding.editTextDate.setOnClickListener {
@@ -120,7 +115,6 @@ class CreateEditActivity : AppCompatActivity() {
 
         if (!isValid) return
 
-        // Pesan Toast yang berbeda untuk mode New dan Edit
         val toastMessage = if (isEditMode) {
             "Activity updated! (Demo)"
         } else {
@@ -143,7 +137,11 @@ class CreateEditActivity : AppCompatActivity() {
                 fieldViewModel.fieldsData.collect { fields ->
                     if (fields.isNotEmpty()) {
                         val fieldNames = fields.map { it.fieldName }
-                        val adapter = ArrayAdapter(this@CreateEditActivity, android.R.layout.simple_dropdown_item_1line, fieldNames)
+                        val adapter = ArrayAdapter(
+                            this@CreateEditActivity,
+                            android.R.layout.simple_dropdown_item_1line,
+                            fieldNames
+                        )
                         binding.autoCompleteField.setAdapter(adapter)
                     }
                 }

@@ -21,23 +21,13 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.FirebaseDatabase
 import java.security.MessageDigest
-import kotlin.apply
-import kotlin.collections.forEach
-import kotlin.collections.getValue
-import kotlin.text.buildString
-import kotlin.text.get
-import kotlin.text.isEmpty
-import kotlin.text.toByteArray
-import kotlin.text.trim
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var tietEmail: TextInputEditText
     private lateinit var tietPassword: TextInputEditText
-
     private lateinit var tilEmail: TextInputLayout
     private lateinit var tilPassword: TextInputLayout
     private lateinit var mBtnLogin: MaterialButton
-
     private var isEmailValid = false
     private var isPasswordValid = false
     private lateinit var tvLoginErrorMsg: TextView
@@ -128,10 +118,7 @@ class LoginActivity : AppCompatActivity() {
                     tilPassword.error = "Password is required"
                     false
                 }
-//                password.length < 8 -> {
-//                    tilPassword.error = "Password must be at least 8 characters"
-//                    false
-//                }
+
                 else -> {
                     tilPassword.error = null
                     true

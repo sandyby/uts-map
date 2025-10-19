@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:clickable="true"
             android:contentDescription="Back"
             android:focusable="true"
@@ -30,11 +30,11 @@
             android:id="@+id/tv_field_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/lato_bold"
             android:text="Field Name"
             android:textColor="@color/text_primary_900"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -49,7 +49,6 @@
         app:layout_anchorGravity="bottom" />
 
     <LinearLayout
-        android:id="@+id/ll_detail_fragment_content_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -64,7 +63,6 @@
             android:layout_height="wrap_content" />
 
         <FrameLayout
-            android:id="@+id/fl_fields_tabs_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"

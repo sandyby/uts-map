@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="red">#FF0000</color>
-    <color name="bg_primary_900">#5F6C37</color>
-    <color name="bg_primary_800">#343D2A</color>
-    <color name="bg_primary_700">#414934</color>
-    <color name="bg_primary_600">#666D4B</color>
     <color name="bg_primary_500">#7D8657</color>
     <color name="bg_primary_400">#A4AC85</color>
     <color name="bg_secondary_900">#FEFADF</color>
     <color name="bg_secondary_overlay_2">#D4D4D4</color>
     <color name="bg_secondary_overlay_3">#D9D9D9</color>
-    <color name="bg_accent_900">#BC6C25</color>
-    <color name="bg_accent_500">#DCA15D</color>
     <color name="text_primary_900">#273617</color>
     <color name="text_primary_500">#7D8657</color>
     <color name="text_900">#212429</color>
-    <color name="text_800">#353A40</color>
     <color name="text_700">#495058</color>
     <color name="text_600">#6C757E</color>
     <color name="text_500">#ADB6BD</color>
@@ -26,6 +17,5 @@
     <color name="text_200">#E8ECEF</color>
     <color name="text_100">#F8F9FB</color>
     <color name="text_error_900">#dd4336</color>
-    <color name="text_fiery_ocean">#780000</color>
     <color name="text_fiery_red_sunset_600">#d00000</color>
 </resources>

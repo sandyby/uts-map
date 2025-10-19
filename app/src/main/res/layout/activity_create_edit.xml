@@ -21,26 +21,27 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/button_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:id="@+id/ib_backBtn"
+                android:layout_height="24dp"
+                android:scaleType="fitCenter"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_filled_chevron_right_24_text_primary_900"
+                android:src="@drawable/ic_filled_keyboard_backspace_24_text_primary_900"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@android:color/white" />
+                app:tint="@color/text_primary_900" />
 
             <TextView
                 android:id="@+id/textViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Activity"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary_900"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,10 +136,11 @@
             <Button
                 android:id="@+id/buttonSave"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="32dp"
+                android:fontFamily="@font/lato_bold"
                 android:backgroundTint="#6E7C3C"
-                android:text="Submit"
+                android:text="CREATE"
                 android:textColor="@android:color/white"
                 android:paddingVertical="12dp"/>
 

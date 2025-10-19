@@ -15,7 +15,6 @@ import com.example.sawit.R
 import com.example.sawit.fragments.FieldsFragment
 import com.example.sawit.fragments.HomeFragment
 import com.example.sawit.fragments.PredictFragment
-import com.example.sawit.fragments.PredictionsFragment
 import com.example.sawit.fragments.ProfileFragment
 import com.example.sawit.fragments.TopHeaderFragment
 import com.google.android.material.progressindicator.CircularProgressIndicator
@@ -73,24 +72,10 @@ class MainActivity : AppCompatActivity() {
             text = "99",
             backgroundColor = Color.RED,
             textColor = Color.GREEN,
-            textSize = 12 // in pixels
+            textSize = 12
         )
 
         bottomBar = findViewById(R.id.abb_bottom_bar)
-
-//        bottomBar.setBadgeAtTabIndex(
-//            1,
-//            AnimatedBottomBar.Badge(
-//                text = "99",
-//                backgroundColor = Color.RED,
-//                textColor = Color.WHITE,
-//                textSize = 12
-//            )
-//        )
-
-//        bottomBar.setOnTabSelectListener { _, newTab, _ ->
-//            when (newTab.id)
-//        }
 
         bottomBar.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
@@ -116,7 +101,6 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.tab_predict -> {
-//                        show(predictionsFragment)
                         show(predictionsFragment)
                         topHeaderFragment.setTopHeaderFragmentTitle("Predictions")
                     }
@@ -142,7 +126,6 @@ class MainActivity : AppCompatActivity() {
         overlay.visibility = if (show) View.VISIBLE else View.GONE
         progress.visibility = if (show) View.VISIBLE else View.GONE
     }
-
 
     private fun show(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()

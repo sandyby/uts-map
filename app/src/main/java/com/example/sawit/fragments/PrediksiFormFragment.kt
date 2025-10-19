@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.sawit.R
 import com.google.android.material.button.MaterialButton
@@ -51,7 +53,8 @@ class PrediksiFormFragment : Fragment(R.layout.fragment_prediksi_form) {
             if (lahan.isEmpty() || luas.isEmpty() || bibit.isEmpty() || pupuk.isEmpty() ||
                 ton.isEmpty() || tahun.isEmpty() || umur.isEmpty() || hujan.isEmpty()
             ) {
-                Toast.makeText(requireContext(), "Semua field harus diisi!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Semua field harus diisi!", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 

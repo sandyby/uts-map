@@ -6,17 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.sawit.R
-import com.example.sawit.databinding.FragmentPredictionsBinding
-import com.example.sawit.databinding.FragmentPrediksiFormBinding
 import com.example.sawit.databinding.FragmentPrediksiFormHarvestBinding
-import com.example.sawit.fragments.ResultFragment
 import com.example.sawit.viewmodels.FieldViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

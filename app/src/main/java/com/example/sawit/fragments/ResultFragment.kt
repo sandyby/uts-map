@@ -25,7 +25,6 @@ class ResultFragment : Fragment() {
             }
         }
 
-
         return view
     }
 }

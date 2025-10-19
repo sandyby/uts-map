@@ -7,9 +7,4 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Style.LatoBold14" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">14sp</item>
-        <item name="fontFamily">@font/lato_bold</item>
-        <item name="android:textStyle">bold</item>
-    </style>
 </resources>

@@ -11,7 +11,6 @@ class ActivityViewModel : ViewModel() {
     val activities: StateFlow<List<Activity>> = _activities
 
     init {
-        // Panggil fungsi untuk membuat data dummy
         loadHardcodedActivities()
     }
 

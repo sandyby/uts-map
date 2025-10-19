@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/ll_statistics_action_btn_wrapper"
         android:layout_width="296dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
