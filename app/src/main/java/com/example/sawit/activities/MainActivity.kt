@@ -115,6 +115,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     R.id.tab_predict -> {
+//                        show(predictionsFragment)
                         show(predictionsFragment)
                         topHeaderFragment.setTopHeaderFragmentTitle("Predictions")
                     }
