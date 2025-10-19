@@ -5,63 +5,118 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.sawit.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sawit.adapters.ActivityAdapter
 import com.example.sawit.databinding.FragmentActivitiesBinding
-import com.google.android.material.tabs.TabLayoutMediator
+import com.example.sawit.viewmodels.ActivityViewModel
+import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.launch
 
 class ActivitiesFragment : Fragment() {
 
     private var _binding: FragmentActivitiesBinding? = null
     private val binding get() = _binding!!
 
+    // Menggunakan ActivityViewModel untuk mendapatkan data hardcoded
+    private val viewModel: ActivityViewModel by viewModels()
+    private lateinit var activityAdapter: ActivityAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment using view binding
         _binding = FragmentActivitiesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViewPager()
-        setupFabListener() // Set up the listener for the FAB
+
+        setupRecyclerView()
+        setupTabLayout()
+        observeActivities()
+        setupFabListener() // Memanggil listener untuk FAB
     }
 
-    private fun setupViewPager() {
-        // This part is a placeholder for now.
-        // We will implement the ViewPager and its adapter in the next steps
-        // to show the "Planned" and "Completed" lists.
-
-        // val adapter = ActivityViewPagerAdapter(this)
-        // binding.viewPager.adapter = adapter
-        //
-        // TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-        //     tab.text = when (position) {
-        //         0 -> getString(R.string.planned) // We will add this string resource later
-        //         1 -> getString(R.string.completed) // We will add this string resource later
-        //         else -> null
-        //     }
-        // }.attach()
-    }
-
-    /**
-     * Sets up the OnClickListener for the Floating Action Button.
-     * When clicked, it will open the CreateEditActivity.
-     */
     private fun setupFabListener() {
-        binding.fabAddTask.setOnClickListener {
-            // Create an Intent to navigate from the current context to CreateEditActivity
+        binding.fabAddActivity.setOnClickListener {
+            // Intent untuk membuka CreateEditActivity
             val intent = Intent(requireActivity(), CreateEditActivity::class.java)
             startActivity(intent)
         }
     }
 
+    private fun setupRecyclerView() {
+        // Inisialisasi adapter dengan listener demo
+        activityAdapter = ActivityAdapter(
+            onCheckboxClicked = { activity, isChecked ->
+                val status = if (isChecked) "Completed" else "Planned"
+                Toast.makeText(context, "${activity.fieldName} status changed to $status (Demo)", Toast.LENGTH_SHORT).show()
+                // Logika untuk memindahkan item antar list bisa ditambahkan di sini
+            },
+            onEditClicked = { activity ->
+                Toast.makeText(context, "Edit ${activity.fieldName} (Demo)", Toast.LENGTH_SHORT).show()
+            },
+            onDeleteClicked = { activity ->
+                Toast.makeText(context, "Delete ${activity.fieldName} (Demo)", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        binding.recyclerViewActivities.apply {
+            adapter = activityAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    private fun observeActivities() {
+        // Mengamati data hardcoded dari ViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.activities.collect { allActivities ->
+                    // Saat data pertama kali datang, filter dan tampilkan tab 'Planned' (tab default)
+                    if (binding.tabLayout.selectedTabPosition == 0) {
+                        val plannedActivities = allActivities.filter { it.status == "planned" }
+                        activityAdapter.submitList(plannedActivities)
+                    } else {
+                        val completedActivities = allActivities.filter { it.status == "completed" }
+                        activityAdapter.submitList(completedActivities)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupTabLayout() {
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                // Dapatkan daftar lengkap dari ViewModel setiap kali tab diganti
+                val allActivities = viewModel.activities.value
+                when (tab?.position) {
+                    0 -> { // Tab "Planned"
+                        val plannedActivities = allActivities.filter { it.status == "planned" }
+                        activityAdapter.submitList(plannedActivities)
+                    }
+
+                    1 -> { // Tab "Completed"
+                        // PERBAIKAN: Menggunakan 'allActivities' bukan 'allSettings'
+                        val completedActivities = allActivities.filter { it.status == "completed" }
+                        activityAdapter.submitList(completedActivities)
+                    }
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
-        // Clean up the binding reference to avoid memory leaks
         _binding = null
     }
 }
