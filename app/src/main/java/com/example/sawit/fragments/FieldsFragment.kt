@@ -6,55 +6,75 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.sawit.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FieldsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FieldsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fields, container, false)
     }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FieldsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FieldsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
+
+//class HomeFragment : Fragment() {
+//    private var _binding: FragmentHomeBinding? = null
+//    private val binding get() = _binding!!
+//    private val fieldViewModel: FieldViewModel by viewModels()
+//    private val notificationViewModel: NotificationViewModel by activityViewModels()
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+////        val view = inflater.inflate(R.layout.fragment_home, container, false)
+////        val composeView = view.findViewById<ComposeView>(R.id.cv_notification_badge)
+//
+//        val composeView = binding.cvNotificationBadge
+//        composeView.setContent {
+//            val notificationCount by notificationViewModel.notificationCount.observeAsState(0)
+//
+////            var notificationCount by remember { mutableIntStateOf(0) }
+//
+//            NotificationIconWithBadge(
+//                count = notificationCount,
+//                onClick = {
+//                    notificationViewModel.increment()
+//                    Log.d("HomeFragment", "Notification icon clicked — count = $notificationCount")
+//                }
+//            )
+//        }
+//        return binding.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        val adapter = FieldsAdapter { field ->
+//            Toast.makeText(context, "clicked: ${field.fieldName}", Toast.LENGTH_SHORT).show()
+//        }
+//
+//
+//        binding.rvFieldsOverview.apply {
+//            this.adapter = adapter
+//            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//        }
+//        val spacingInPx = resources.getDimensionPixelSize(R.dimen.horizontal_item_spacing)
+//        binding.rvFieldsOverview.addItemDecoration(HorizontalSpaceItemDecoration(spacingInPx))
+//
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            fieldViewModel.fieldsData.collectLatest { fields ->
+//                adapter.submitList(fields)
+//            }
+//        }
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
+//}

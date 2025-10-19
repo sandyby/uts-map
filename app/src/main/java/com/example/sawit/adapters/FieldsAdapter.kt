@@ -39,7 +39,7 @@ class FieldsAdapter(
         viewType: Int
     ): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.fields_card_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.fields_card_item_dashboard, parent, false)
         return ViewHolder(view)
     }
 
