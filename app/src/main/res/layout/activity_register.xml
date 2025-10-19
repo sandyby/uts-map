@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     android:background="@color/bg_primary_500"
     android:fitsSystemWindows="true"
-    tools:context=".RegisterActivity">
+    tools:context=".activities.RegisterActivity">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="76dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/sawit_cropped"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/sawit_logo_bottom_text_cropped"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -4,17 +4,14 @@
     android:id="@+id/nsv_fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_secondary_900">
+    android:background="@color/bg_secondary_900"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fl_notification_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
-
-        <!--        <ImageView-->
-        <!--            android:layout_width=""-->
-        <!--            android:layout_height=""-->
 
         <LinearLayout
             android:id="@+id/ll_welcome_msg_wrapper"
@@ -80,12 +77,92 @@
             style="@style/CustomWeatherCardViewStyle"
             android:layout_width="match_parent"
             android:layout_height="176dp"
+            app:cardBackgroundColor="#709ED2"
             android:layout_marginTop="16dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ll_welcome_msg_wrapper" />
+            app:layout_constraintTop_toBottomOf="@id/ll_welcome_msg_wrapper">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/iv_weather_icon"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/sunny_weather"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_location_icon"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginTop="4dp"
+                    android:src="@drawable/ic_filled_location_on_24_white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_weather_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="30°C"
+                    android:textColor="@color/white"
+                    android:textSize="48sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_weather_condition"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="@id/iv_location_icon" />
+
+                <TextView
+                    android:id="@+id/tv_weather_condition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="Sunny"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@id/iv_weather_icon"
+                    app:layout_constraintStart_toEndOf="@id/tv_weather_temperature"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_weather_temperature"
+                    app:layout_constraintHorizontal_bias="0.5" />
+
+                <TextView
+                    android:id="@+id/tv_weather_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Ngabang"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    app:layout_constraintBottom_toTopOf="@id/tv_weather_subtext_location"
+                    app:layout_constraintStart_toEndOf="@id/iv_location_icon"
+                    app:layout_constraintTop_toTopOf="@id/iv_location_icon" />
+
+                <TextView
+                    android:id="@+id/tv_weather_subtext_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="West Kalimantan"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_location_icon"
+                    app:layout_constraintStart_toStartOf="@+id/tv_weather_location"
+                    app:layout_constraintTop_toBottomOf="@id/tv_weather_location" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/tv_fields_label"
@@ -99,37 +176,375 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mcv_weather_information" />
 
-        <!--        <HorizontalScrollView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:layout_height="64dp"-->
-        <!--            android:id="@+id/hsv_fields_overview"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toBottomOf="@id/tv_fields_label"-->
+        <TextView
+            android:id="@+id/tv_fields_view_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_filled_chevron_right_24_text_primary_900"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center_vertical"
+            android:text="View More"
+            android:textColor="@color/text_primary_900"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_fields_label" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_fields_overview"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_fields_label" />
 
+        <TextView
+            android:id="@+id/tv_activities_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Recent Activities"
+            android:textColor="@color/text_primary_900"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_fields_overview" />
 
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/ib_notification_btn"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            android:layout_marginEnd="16dp"-->
-        <!--            android:background="@drawable/bg_btn_icon"-->
-        <!--            android:contentDescription="Notification Button Icon"-->
-        <!--            android:padding="8dp"-->
-        <!--            android:scaleType="centerInside"-->
-        <!--            android:src="@drawable/ic_filled_notifications_24_white"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <TextView
+            android:id="@+id/tv_activities_view_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_filled_chevron_right_24_text_primary_900"
+            android:fontFamily="@font/lato_bold"
+            android:gravity="center_vertical"
+            android:text="View More"
+            android:textColor="@color/text_primary_900"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_activities_label" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv_activities_overview"
+            style="@style/CustomActivitiesCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_activities_label">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_activity_timeline_item_tomorrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.github.vipulasri.timelineview.TimelineView
+                        android:id="@+id/timeline_tomorrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:endLineColor="@color/bg_primary_500"
+                        app:lineStyle="dash"
+                        app:lineWidth="2dp"
+                        app:marker="@drawable/timeline_marker_ring_tomorrow"
+                        app:markerSize="20dp"
+                        app:startLineColor="@android:color/transparent" />
+
+                    <TextView
+                        android:id="@+id/tv_timeline_date"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="27/10/2025"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_activities_timeline_item_tomorrow"
+                        style="@style/CustomActivitiesCardItemViewStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/bg_primary_500"
+                        android:backgroundTint="@color/bg_primary_500">
+
+                        <LinearLayout
+                            android:id="@+id/ll_activities_timeline_item_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+
+                                <TextView
+                                    android:id="@+id/tv_activities_field_name"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:alpha="0.8"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/lato_italic"
+                                    android:maxLines="1"
+                                    android:text="Lahan Manjur Sukses"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tv_activities_action"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:maxLines="1"
+                                    android:text="Harvesting Crops"
+                                    android:textColor="@color/bg_secondary_900"
+                                    android:textSize="20sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_activities_field_name" />
+
+                            </LinearLayout>
+
+                            <ImageButton
+                                android:id="@+id/ib_activity_view_detail_1"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:background="@android:color/transparent"
+                                android:contentDescription="View Details"
+                                android:padding="8dp"
+                                android:scaleType="center"
+                                android:src="@drawable/ic_filled_chevron_right_36_text_primary_900" />
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_activity_timeline_item_today"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.github.vipulasri.timelineview.TimelineView
+                        android:id="@+id/timeline_today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:endLineColor="@color/bg_primary_500"
+                        app:lineWidth="2dp"
+                        app:marker="@drawable/timeline_marker_ring_today"
+                        app:markerInCenter="true"
+                        app:markerSize="20dp"
+                        app:startLineColor="@color/bg_primary_500"
+                        app:startLineStyle="dashed" />
+
+                    <TextView
+                        android:id="@+id/tv_timeline_date_2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="07/10/2025"
+                        android:textSize="12sp" />
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_activities_timeline_item_today"
+                        style="@style/CustomActivitiesCardItemViewStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/bg_primary_500"
+                        android:backgroundTint="@color/bg_primary_500">
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_activities_timeline_item_content_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_activities_field_name_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:alpha="0.8"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/lato_italic"
+                                    android:maxLines="1"
+                                    android:text="Lahan 1 lorem ipsum dolor si amet lorem ipsum dolor si amet"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tv_activities_action_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:maxLines="1"
+                                    android:text="Watering Crops"
+                                    android:textColor="@color/bg_secondary_900"
+                                    android:textSize="20sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_activities_field_name" />
+
+                            </LinearLayout>
+
+                            <ImageButton
+                                android:id="@+id/ib_activity_view_detail_2"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:background="@android:color/transparent"
+                                android:padding="8dp"
+                                android:scaleType="center"
+                                android:src="@drawable/ic_filled_chevron_right_36_text_primary_900" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_activity_timeline_item_past"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.github.vipulasri.timelineview.TimelineView
+                        android:id="@+id/timeline_past"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:endLineColor="@android:color/transparent"
+                        app:lineWidth="2dp"
+                        app:markerInCenter="false"
+                        app:markerPaddingTop="24dp"
+                        app:markerSize="20dp"
+                        app:startLineColor="@color/bg_primary_500"
+                        app:startLineStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/tv_timeline_date_3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:fontFamily="@font/lato_bold"
+                        android:text="20/09/2025"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcv_activities_timeline_item_past"
+                        style="@style/CustomActivitiesCardItemViewStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/bg_primary_500"
+                        android:backgroundTint="@color/bg_primary_500">
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_activities_timeline_item_content_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="8dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_activities_field_name_3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:alpha="0.8"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/lato_italic"
+                                    android:maxLines="1"
+                                    android:text="Lahan Manjur Sukses"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tv_activities_action_3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/lato_bold"
+                                    android:maxLines="1"
+                                    android:text="Watering Crops"
+                                    android:textColor="@color/bg_secondary_900"
+                                    android:textSize="20sp"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_activities_field_name" />
+
+                            </LinearLayout>
+
+                            <ImageButton
+                                android:id="@+id/ib_activity_view_detail_3"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:background="@android:color/transparent"
+                                android:padding="8dp"
+                                android:scaleType="center"
+                                android:src="@drawable/ic_filled_chevron_right_36_text_primary_900" />
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--            <androidx.core.widget.NestedScrollView-->
+            <!--                android:id="@+id/iv_activites_timeline"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:paddingTop="8dp">-->
+
+            <!--                -->
+            <!--            </androidx.core.widget.NestedScrollView>-->
+
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

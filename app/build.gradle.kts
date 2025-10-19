@@ -6,11 +6,14 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sawitku"
+    viewBinding {
+        enable = true
+    }
+    namespace = "com.example.sawit"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.sawitku"
+        applicationId = "com.example.sawit"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -51,8 +54,11 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.4.0")
     implementation("androidx.compose.ui:ui:1.9.3")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.5")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.4")
+    implementation("com.github.vipulasri:timelineview:1.2.2")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.4")
     implementation("androidx.fragment:fragment-ktx:1.8.9")
     implementation("com.google.android.material:material:1.13.0")

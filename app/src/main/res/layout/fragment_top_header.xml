@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_width="124dp"
                 android:layout_height="32dp"
-                android:src="@drawable/sawit_cropped"
+                android:src="@drawable/sawit_logo_end_text_cropped"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
