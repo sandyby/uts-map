@@ -137,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:backgroundTint="#6E7C3C"
-                android:text="Simpan"
+                android:text="Create"
                 android:textColor="@android:color/white"
                 android:paddingVertical="12dp"/>
 
