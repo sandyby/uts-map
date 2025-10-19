@@ -3,4 +3,13 @@
     <string name="login_btn">LOGIN</string>
     <string name="register_btn">REGISTER</string>
     <string name="firebase_database_reference_url">https://sawit-6876f-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
+
+    <string-array name="activity_types">
+        <item>Harvest</item>
+        <item>Fertilizing</item>
+        <item>Watering</item>
+        <item>Inspection</item>
+        <item>Pruning</item>
+        <item>Pest Control</item>
+    </string-array>
 </resources>
