@@ -32,6 +32,7 @@
                 app:tint="@android:color/white" />
 
             <TextView
+                android:id="@+id/textViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Activity"
@@ -137,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:backgroundTint="#6E7C3C"
-                android:text="Create"
+                android:text="Submit"
                 android:textColor="@android:color/white"
                 android:paddingVertical="12dp"/>
 

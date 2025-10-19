@@ -46,7 +46,7 @@ class ActivitiesFragment : Fragment() {
 
     private fun setupFabListener() {
         binding.fabAddActivity.setOnClickListener {
-            // Intent untuk membuka CreateEditActivity
+            // Intent untuk membuka CreateEditActivity dalam mode "New"
             val intent = Intent(requireActivity(), CreateEditActivity::class.java)
             startActivity(intent)
         }
@@ -61,7 +61,11 @@ class ActivitiesFragment : Fragment() {
                 // Logika untuk memindahkan item antar list bisa ditambahkan di sini
             },
             onEditClicked = { activity ->
-                Toast.makeText(context, "Edit ${activity.fieldName} (Demo)", Toast.LENGTH_SHORT).show()
+                // Membuka CreateEditActivity dengan data untuk mode "Edit"
+                val intent = Intent(requireActivity(), CreateEditActivity::class.java).apply {
+                    putExtra(CreateEditActivity.EXTRA_ACTIVITY, activity)
+                }
+                startActivity(intent)
             },
             onDeleteClicked = { activity ->
                 Toast.makeText(context, "Delete ${activity.fieldName} (Demo)", Toast.LENGTH_SHORT).show()
@@ -104,7 +108,6 @@ class ActivitiesFragment : Fragment() {
                     }
 
                     1 -> { // Tab "Completed"
-                        // PERBAIKAN: Menggunakan 'allActivities' bukan 'allSettings'
                         val completedActivities = allActivities.filter { it.status == "completed" }
                         activityAdapter.submitList(completedActivities)
                     }
@@ -120,4 +123,3 @@ class ActivitiesFragment : Fragment() {
         _binding = null
     }
 }
-
