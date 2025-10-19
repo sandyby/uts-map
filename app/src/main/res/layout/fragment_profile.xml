@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFBEF"
+    android:background="@color/bg_secondary_900"
     tools:context=".fragments.ProfileFragment">
 
     <!-- AppBarLayout for Header (Menggunakan CardView untuk simulasi bentuk melengkung dan Judul) -->
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="John Doe"
-                android:textColor="#333333"
+                android:textColor="@color/text_primary_900"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
