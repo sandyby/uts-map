@@ -21,15 +21,12 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="8dp">
 
-        <!-- Tombol back dengan ripple -->
         <ImageView
-            android:id="@+id/btnBack"
+            android:id="@+id/iv_btn_back"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_filled_chevron_right_24_bg_primary_500"
-            android:rotation="180"
-            android:tint="@color/bg_primary_500"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_filled_keyboard_backspace_24_text_primary_900"
             android:contentDescription="Back Button"
             android:padding="6dp" />
 

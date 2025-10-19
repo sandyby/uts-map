@@ -16,7 +16,7 @@ class ResultFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_result, container, false)
 
-        val btnBack = view.findViewById<ImageView>(R.id.btnBack)
+        val btnBack = view.findViewById<ImageView>(R.id.iv_btn_back)
         btnBack.setOnClickListener {
             try {
                 findNavController().popBackStack()

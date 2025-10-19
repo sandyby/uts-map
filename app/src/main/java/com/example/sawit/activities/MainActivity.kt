@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.sawit.R
 import com.example.sawit.fragments.FieldsFragment
 import com.example.sawit.fragments.HomeFragment
+import com.example.sawit.fragments.PredictFragment
 import com.example.sawit.fragments.PredictionsFragment
 import com.example.sawit.fragments.ProfileFragment
 import com.example.sawit.fragments.TopHeaderFragment
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var homeFragment: HomeFragment
     private lateinit var fieldsFragment: FieldsFragment
     private lateinit var activitiesFragmment: ActivitiesFragment
-    private lateinit var predictionsFragment: PredictionsFragment
+    private lateinit var predictionsFragment: PredictFragment
     private lateinit var profileFragment: ProfileFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         homeFragment = HomeFragment()
         fieldsFragment = FieldsFragment()
         activitiesFragmment = ActivitiesFragment()
-        predictionsFragment = PredictionsFragment()
+        predictionsFragment = PredictFragment()
         profileFragment = ProfileFragment()
 
         show(homeFragment)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nsv_fragment_predictions"
@@ -9,250 +9,31 @@
     android:padding="20dp"
     tools:context=".fragments.PredictionsFragment">
 
-    <LinearLayout
+    <com.example.sawit.utils.PredictionTabView
+        android:id="@+id/ptvPredictions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Title -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Harvest Prediction"
-            android:textColor="@color/text_primary_900"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+    <FrameLayout
+        android:id="@+id/fl_fields_tabs_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ptvPredictions">
 
-        <!-- Label for Field -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Field"
-            android:textColor="@color/text_primary_900"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+        <include
+            android:id="@+id/layout_harvest"
+            layout="@layout/fragment_prediksi_form_harvest"
+            android:visibility="visible" />
 
-        <!-- Dropdown Field Name (Field) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:endIconMode="dropdown_menu"
-            app:hintEnabled="false">
+        <include
+            android:id="@+id/layout_condition"
+            layout="@layout/fragment_prediksi_form"
+            android:visibility="gone" />
 
-            <AutoCompleteTextView
-                android:id="@+id/input_field_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/bg_primary_500"
-                android:fontFamily="@font/lato_regular"
-                android:hint="Select Field"
-                android:paddingBottom="12dp"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp"
-                android:paddingTop="12dp"
-                android:textColor="@color/text_primary_900"
-                android:textColorHint="@color/text_500"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Label for Field Area -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Harvest Area"
-            android:textColor="@color/text_primary_900"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <!-- Field Area (Field Area) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_field_area"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_regular"
-                android:hint="Harvest Area (Ha)"
-                android:inputType="numberDecimal"
-                android:paddingBottom="12dp"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp"
-                android:paddingTop="12dp"
-                android:textColor="@color/text_primary_900"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Label for Palm Age -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Palm Age"
-            android:textColor="@color/text_primary_900"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <!-- Palm Age (Palm Age) -->
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_palm_age"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_regular"
-                android:hint="Palm Age (Years)"
-                android:inputType="number"
-                android:paddingBottom="12dp"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp"
-                android:paddingTop="12dp"
-                android:textColor="@color/text_primary_900"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Rainfall & Temperature Row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <!-- Rainfall Column -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="6dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <!-- Label for Rainfall -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="Rainfall"
-                    android:textColor="@color/text_primary_900"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <!-- Rainfall (Rainfall) -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:hintEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_rainfall"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato_regular"
-                        android:hint="Rainfall (mm)"
-                        android:inputType="numberDecimal"
-                        android:paddingBottom="12dp"
-                        android:paddingEnd="16dp"
-                        android:paddingStart="16dp"
-                        android:paddingTop="12dp"
-                        android:textColor="@color/text_primary_900"
-                        android:textSize="13sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <!-- Temperature Column -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <!-- Label for Temperature -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="Temperature"
-                    android:textColor="@color/text_primary_900"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <!-- Temperature (Temperature) -->
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:hintEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/input_temperature"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato_regular"
-                        android:hint="Temperature (°C)"
-                        android:inputType="numberDecimal"
-                        android:paddingBottom="12dp"
-                        android:paddingEnd="16dp"
-                        android:paddingStart="16dp"
-                        android:paddingTop="12dp"
-                        android:textColor="@color/text_primary_900"
-                        android:textSize="13sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Predict Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_predict"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:backgroundTint="@color/bg_primary_500"
-            android:paddingVertical="12dp"
-            android:text="Predict"
-            android:textColor="@color/white"
-            app:cornerRadius="16dp" />
-
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

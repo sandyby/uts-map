@@ -1,16 +1,21 @@
 package com.example.sawit.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.sawit.R
 import com.example.sawit.databinding.FragmentPredictionsBinding
+import com.example.sawit.databinding.FragmentPrediksiFormBinding
+import com.example.sawit.databinding.FragmentPrediksiFormHarvestBinding
 import com.example.sawit.fragments.ResultFragment
 import com.example.sawit.viewmodels.FieldViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -18,7 +23,7 @@ import kotlinx.coroutines.launch
 
 class PredictionsFragment : Fragment() {
 
-    private var _binding: FragmentPredictionsBinding? = null
+    private var _binding: FragmentPrediksiFormHarvestBinding? = null
     private val binding get() = _binding!!
 
     private val fieldViewModel: FieldViewModel by viewModels()
@@ -27,14 +32,13 @@ class PredictionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPredictionsBinding.inflate(inflater, container, false)
+        _binding = FragmentPrediksiFormHarvestBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Ambil data field dari ViewModel dan isi dropdown
         viewLifecycleOwner.lifecycleScope.launch {
             fieldViewModel.fieldsData.collectLatest { fields ->
                 val fieldNames = fields.map { it.fieldName }
@@ -47,8 +51,9 @@ class PredictionsFragment : Fragment() {
             }
         }
 
-        // Tombol Predict
         binding.btnPredict.setOnClickListener {
+            Log.d("PredictionsFragment", "Tes")
+
             val selectedField = binding.inputFieldName.text.toString()
             val fieldArea = binding.inputFieldArea.text.toString()
             val palmAge = binding.inputPalmAge.text.toString()
@@ -62,7 +67,6 @@ class PredictionsFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // Kirim data ke ResultFragment
             val resultFragment = ResultFragment().apply {
                 arguments = Bundle().apply {
                     putString("selectedField", selectedField)
@@ -73,7 +77,6 @@ class PredictionsFragment : Fragment() {
                 }
             }
 
-            // Ganti fragment manual (tanpa navigation component)
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fl_scroll_view_content, resultFragment)
                 .addToBackStack(null)
