@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_secondary_900">
+
+    <!-- Fragment Top Header -->
+    <FrameLayout
+        android:id="@+id/fl_top_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CustomTopHeaderCardViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardBackgroundColor="@color/bg_primary_500">
+
+            <LinearLayout
+                android:id="@+id/ll_top_header_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="124dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/sawit_logo_end_text_cropped"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_header_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
+                    android:gravity="center"
+                    android:text="Add Data"
+                    android:textColor="@color/white"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+    <!-- Konten Form Tambah Data -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Nama Lahan -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fields Name"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary_500"
+            android:fontFamily="@font/lato"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etNamaLahan"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Lahan 1"
+            android:textSize="16sp"
+            android:fontFamily="@font/lato"
+            android:background="@drawable/edittext_background"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Jumlah Panen -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Harvest"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary_500"
+            android:fontFamily="@font/lato"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Container untuk input jumlah, label Per, dan input tahun -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="32dp"
+            android:gravity="center_vertical">
+
+            <!-- Input jumlah (dengan unit "ton" sebagai hint atau ditempel di samping) -->
+            <EditText
+                android:id="@+id/etJumlahPanen"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:hint="ton"
+                android:inputType="numberDecimal"
+                android:fontFamily="@font/lato"
+                android:background="@drawable/edittext_background"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Per -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Per"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary_500"
+                android:fontFamily="@font/lato"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Input tahun -->
+            <EditText
+                android:id="@+id/etTahun"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:hint="th"
+                android:inputType="number"
+                android:fontFamily="@font/lato"
+                android:background="@drawable/edittext_background"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSimpan"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/bg_primary_500"
+            android:fontFamily="@font/lato_bold"
+            android:text="Save"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+    </LinearLayout>
+</LinearLayout>
