@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.Theme.Sawitku" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.SawIt" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:navigationBarColor">@color/bg_secondary_900</item>
     </style>
 
-    <style name="Theme.Sawitku" parent="Base.Theme.Sawitku" />
+    <style name="Theme.SawIt" parent="Base.Theme.SawIt" />
 
     <style name="CustomFormCardViewStyle" parent="Widget.MaterialComponents.CardView">
         <item name="shapeAppearanceOverlay">@style/form_card_custom_corners</item>
@@ -17,6 +17,18 @@
         <item name="shapeAppearanceOverlay">@style/weather_card_custom_corners</item>
         <item name="strokeColor">@color/bg_primary_500</item>
         <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="CustomActivitiesCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/activity_card_custom_corners</item>
+        <item name="strokeColor">@color/bg_primary_500</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="CustomActivitiesCardItemViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/activity_card_item_custom_corners</item>
         <item name="cardElevation">0dp</item>
     </style>
 
@@ -43,6 +55,22 @@
         <item name="cornerSizeBottomLeft">16dp</item>
     </style>
 
+    <style name="activity_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+    </style>
+
+    <style name="activity_card_item_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+        <item name="cornerSizeBottomLeft">8dp</item>
+    </style>
+
     <style name="top_header_card_custom_corners" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">0dp</item>
@@ -51,11 +79,19 @@
         <item name="cornerSizeBottomLeft">32dp</item>
     </style>
 
-    <style name="Theme.Sawitku.SplashScreen" parent="Theme.SplashScreen">
+    <style name="Theme.SplashTheme" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@color/bg_primary_500</item>
         <item name="windowSplashScreenBackground">@color/bg_primary_500</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/sawitku_logo_foreground</item>
-        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>
-        <item name="postSplashScreenTheme">@style/Base.Theme.Sawitku</item>
+        <item name="postSplashScreenTheme">@style/Theme.SawIt</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/sawit_logo_cropped_foreground</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
     </style>
+
+<!--    <style name="Theme.SawIt.SplashScreen" parent="Theme.SplashScreen">-->
+<!--        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>-->
+<!--        <item name="windowSplashScreenBackground">@color/bg_primary_500</item>-->
+<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/sawit_logo_bottom_text_cropped</item>-->
+<!--        <item name="postSplashScreenTheme">@style/Base.Theme.SawIt</item>-->
+<!--    </style>-->
 
 </resources>

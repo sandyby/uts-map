@@ -1,13 +1,120 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Sawitku" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.SawIt" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:navigationBarColor">@color/bg_secondary_900</item>
     </style>
 
-    <style name="Theme.Sawitku.SplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/bg_primary_500</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/sawitku_logo_foreground</item>
-        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>
-        <item name="postSplashScreenTheme">@style/Base.Theme.Sawitku</item>
+    <style name="Theme.SawIt" parent="Base.Theme.SawIt" />
+
+    <style name="CustomFormCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/form_card_custom_corners</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardElevation">0dp</item>
     </style>
+
+    <style name="CustomWeatherCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/weather_card_custom_corners</item>
+        <item name="strokeColor">@color/bg_primary_500</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="CustomActivitiesCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/activity_card_custom_corners</item>
+        <item name="strokeColor">@color/bg_primary_500</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="CustomActivitiesCardItemViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/activity_card_item_custom_corners</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="CustomTopHeaderCardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/top_header_card_custom_corners</item>
+        <item name="strokeColor">@android:color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="form_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">32dp</item>
+        <item name="cornerSizeTopLeft">32dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="weather_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+    </style>
+
+
+    <style name="activity_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+    </style>
+
+    <style name="activity_card_item_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+        <item name="cornerSizeBottomLeft">8dp</item>
+    </style>
+
+    <style name="top_header_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">32dp</item>
+        <item name="cornerSizeBottomLeft">32dp</item>
+    </style>
+
+    <!--    <style name="Theme.SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">-->
+    <!--        &lt;!&ndash;        <item name="android:windowBackground">@drawable/bg_splash_screen</item>&ndash;&gt;-->
+    <!--        <item name="windowSplashScreenAnimatedIcon">@mipmap/sawitku_logo_foreground</item>-->
+    <!--        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>-->
+    <!--    </style>-->
+
+    <style name="Theme.SplashTheme" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@color/bg_primary_500</item>
+        <item name="windowSplashScreenBackground">@color/bg_primary_500</item>
+        <item name="postSplashScreenTheme">@style/Theme.SawIt</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/sawit_logo_cropped_foreground</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
+    </style>
+
+    <!--    <style name="Theme.SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">-->
+    <!--        <item name="android:windowBackground">@drawable/bg_splash_screen</item>-->
+    <!--        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="Base.Theme.SawIt" parent="Theme.Material3.DayNight.NoActionBar">-->
+    <!--        <item name="android:navigationBarColor">@color/bg_secondary_900</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="Theme.SplashTheme" parent="Theme.AppCompat.DayNight.NoActionBar">-->
+    <!--        <item name="windowSplashScreenAnimatedIcon">@mipmap/sawit_logo_cropped</item>-->
+    <!--        <item name="windowSplashScreenIconBackgroundColor">@color/text_primary_900</item>-->
+
+    <!--        &lt;!&ndash;        <item name="android:windowBackground">@drawable/bg_splash_screen</item>&ndash;&gt;-->
+    <!--        &lt;!&ndash;        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>&ndash;&gt;-->
+    <!--    </style>-->
+
+    <!--    <style name="Theme.SawIt.SplashScreen" parent="Theme.SplashScreen">-->
+    <!--        <item name="windowSplashScreenBackground">@color/bg_primary_500</item>-->
+    <!--        <item name="windowSplashScreenAnimatedIcon">@drawable/sawit_logo_cropped_160</item>-->
+    <!--        <item name="windowSplashScreenIconBackgroundColor">@color/bg_primary_500</item>-->
+    <!--        <item name="postSplashScreenTheme">@style/Base.Theme.SawIt</item>-->
+    <!--    </style>-->
 </resources>
