@@ -18,6 +18,15 @@ Melalui kemajuan **mobile technology** dan **machine learning**, SawIt hadir seb
 
 ---
 
+## Anggota Kelompok
+
+1. Maureen Alexandria (00000107632)
+2. Steven Lee (00000105886)
+3. Dewangga Vito Smaradhana (00000107630)
+4. Sandy Bonfilio Yuvens (00000106442)
+
+---
+
 ## 🎯 Tujuan Proyek
 
 1. **Membangun Aplikasi Android Native:**  
