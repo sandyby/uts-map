@@ -109,11 +109,9 @@ Dengan antarmuka yang ramah pengguna, fitur komprehensif, dan dukungan data real
 
 ## Lampiran
 
-Figma
+#### Figma
 https://www.figma.com/design/ZAeIfQnTV99H8YtGrfyJlM/Contact-List-App?node-id=0-1&t=ryPZTb2faFNI474t-1
-Github Repository
+#### Github Repository
 https://github.com/sandyby/uts-map
-Canva
-https://www.canva.com/design/DAG2MvdjhfU/n0j-VUsWxTTYkHAFyFgS9w/edit?utm_content=DAG2MvdjhfU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-Google Drive Video
+#### Google Drive Video
 https://drive.google.com/drive/folders/1ZZc1Zq13pow0m5pneXKxi_iob-QIInyi?usp=sharing
