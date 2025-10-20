@@ -18,15 +18,6 @@ Melalui kemajuan **mobile technology** dan **machine learning**, SawIt hadir seb
 
 ---
 
-## Anggota Kelompok
-
-1. Maureen Alexandria (00000107632)
-2. Steven Lee (00000105886)
-3. Dewangga Vito Smaradhana (00000107630)
-4. Sandy Bonfilio Yuvens (00000106442)
-
----
-
 ## 🎯 Tujuan Proyek
 
 1. **Membangun Aplikasi Android Native:**  
@@ -101,6 +92,28 @@ SawIt terdiri dari **tiga komponen utama**:
 
 ---
 
+## Anggota Kelompok
+
+1. Maureen Alexandria (00000107632)
+2. Steven Lee (00000105886)
+3. Dewangga Vito Smaradhana (00000107630)
+4. Sandy Bonfilio Yuvens (00000106442)
+
+---
+
 ## 🚀 Kesimpulan
 SawIt menghadirkan pendekatan modern dalam manajemen perkebunan kelapa sawit melalui integrasi antara **Android Native App** dan **Machine Learning**.  
 Dengan antarmuka yang ramah pengguna, fitur komprehensif, dan dukungan data real-time, SawIt menjadi langkah nyata menuju **transformasi digital sektor agrikultur Indonesia**.
+
+---
+
+## Lampiran
+
+Figma
+https://www.figma.com/design/ZAeIfQnTV99H8YtGrfyJlM/Contact-List-App?node-id=0-1&t=ryPZTb2faFNI474t-1
+Github Repository
+https://github.com/sandyby/uts-map
+Canva
+https://www.canva.com/design/DAG2MvdjhfU/n0j-VUsWxTTYkHAFyFgS9w/edit?utm_content=DAG2MvdjhfU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+Google Drive Video
+https://drive.google.com/drive/folders/1ZZc1Zq13pow0m5pneXKxi_iob-QIInyi?usp=sharing
