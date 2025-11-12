@@ -5,39 +5,44 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/sawit_logo_only_cropped"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/sawit_logo_only_cropped"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.SawIt">
-        <activity
-            android:name=".activities.SplashScreenActivity"
-            android:exported="true"
-            android:theme="@style/Theme.SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+    android:allowBackup="true"
+    android:dataExtractionRules="@xml/data_extraction_rules"
+    android:fullBackupContent="@xml/backup_rules"
+    android:icon="@drawable/sawit_logo_only_cropped"
+    android:label="@string/app_name"
+    android:roundIcon="@drawable/sawit_logo_only_cropped"
+    android:supportsRtl="true"
+    android:theme="@style/Theme.SawIt">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activities.MainActivity"
-            android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
-            android:exported="true" />
-        <activity
-            android:name=".activities.RegisterActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activities.LoginActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activities.CreateEditActivity" />
-    </application>
+    <activity
+        android:name=".activities.SplashScreenActivity"
+        android:exported="true"
+        android:theme="@style/Theme.SplashTheme">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name=".activities.MainActivity"
+        android:configChanges="uiMode|orientation|keyboardHidden|screenSize"
+        android:exported="true" />
+    <activity
+        android:name=".activities.RegisterActivity"
+        android:exported="true"
+        android:windowSoftInputMode="adjustPan" />
+    <activity
+        android:name=".activities.LoginActivity"
+        android:exported="true"
+        android:windowSoftInputMode="adjustPan" />
+    <activity
+        android:name=".activities.CreateEditActivity" />
+
+    <activity android:name=".activities.EditProfileActivity" />
+    <activity android:name=".activities.EditPasswordActivity" />
+
+</application>
 
 
 </manifest>
