@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -119,10 +119,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
+        android:layout_marginHorizontal="0dp"
         android:layout_marginTop="24dp"
         android:background="@android:color/white"
-        android:elevation="6dp"
+        android:elevation="0dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">

@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="#6E7C3C"
+        android:background="@color/bg_primary_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -30,14 +30,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/text_primary_900" />
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/textViewTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Activity"
-                android:textColor="@color/text_primary_900"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -139,7 +139,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/lato_bold"
-                android:backgroundTint="#6E7C3C"
+                android:backgroundTint="@color/bg_primary_500"
                 android:text="CREATE"
                 android:textColor="@android:color/white"
                 android:paddingVertical="12dp"/>
