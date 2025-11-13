@@ -22,9 +22,9 @@ class AddFieldDataFragment : Fragment(R.layout.activity_add_data) {
         }
 
         btnSave.setOnClickListener {
-            Toast.makeText(requireContext(), "Successfully created new field!", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Successfully created new field!", Toast.LENGTH_LONG)
+                .show()
             parentFragmentManager.popBackStack()
         }
     }
 }
-

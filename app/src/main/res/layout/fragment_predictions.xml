@@ -8,31 +8,28 @@
     android:padding="20dp"
     tools:context=".fragments.PredictionsFragment">
 
-    <com.example.sawit.utils.PredictionTabView
-        android:id="@+id/ptvPredictions"
-        android:layout_width="match_parent"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_predictions"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/text_primary_900"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/text_primary_900"
+        app:tabTextAppearance="@style/CustomTabLayoutTextStyle"
+        app:tabTextColor="@color/text_600" />
 
-    <FrameLayout
-        android:id="@+id/fl_fields_tabs_content"
-        android:layout_width="match_parent"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_predictions"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ptvPredictions">
-
-        <include
-            android:id="@+id/layout_harvest"
-            layout="@layout/fragment_prediksi_form_harvest"
-            android:visibility="visible" />
-
-        <include
-            android:id="@+id/layout_condition"
-            layout="@layout/fragment_prediksi_form"
-            android:visibility="gone" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@id/tl_predictions" />
 </androidx.constraintlayout.widget.ConstraintLayout>
