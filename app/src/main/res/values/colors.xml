@@ -18,4 +18,5 @@
     <color name="text_100">#F8F9FB</color>
     <color name="text_error_900">#dd4336</color>
     <color name="text_fiery_red_sunset_600">#d00000</color>
+    <color name="text_disabled">#CCCCCC</color>
 </resources>

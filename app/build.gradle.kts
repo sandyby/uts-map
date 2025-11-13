@@ -56,6 +56,7 @@ dependencies {
     androidTestImplementation(composeBom)
     implementation("androidx.compose.material3:material3:1.4.0")
     implementation("androidx.compose.ui:ui:1.9.3")
+    implementation("androidx.activity:activity-compose:1.11.0")
     implementation("androidx.compose.ui:ui-tooling-preview:1.9.4")
     implementation(libs.androidx.runtime.livedata)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")

@@ -18,6 +18,7 @@ import com.example.sawit.activities.LoginActivity
 import com.example.sawit.activities.EditProfileActivity
 import com.example.sawit.activities.EditPasswordActivity
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import com.google.android.material.button.MaterialButton
 
 class ProfileFragment : Fragment() {
 
@@ -34,7 +35,7 @@ class ProfileFragment : Fragment() {
             if (newName != null && newEmail != null) {
                 tvUserName.text = newName
                 tvUserEmail.text = newEmail
-                Toast.makeText(requireContext(), "Nama berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "(temporary) update nama berhasil", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -52,12 +53,12 @@ class ProfileFragment : Fragment() {
         tvUserName = view.findViewById(R.id.tv_user_name)
         tvUserEmail = view.findViewById(R.id.tv_user_email)
 
-        tvUserName.text = "John Doe" // Data awal, bisa dimuat dari SharedPreferences
-        tvUserEmail.text = "john.doe@gmail.com" // Data awal
+        tvUserName.text = "John Doe"
+        tvUserEmail.text = "john.doe@gmail.com"
 
         val itemEditProfile = view.findViewById<ConstraintLayout>(R.id.item_edit_profile)
         val itemEditPassword = view.findViewById<ConstraintLayout>(R.id.item_edit_password)
-        val logoutContainer = view.findViewById<LinearLayout>(R.id.logout_container)
+        val mBtnLogOut = view.findViewById<MaterialButton>(R.id.mBtn_logout)
         val btnEditPic = view.findViewById<ImageButton>(R.id.btn_edit_profile_pic)
 
         itemEditProfile.setOnClickListener {
@@ -75,10 +76,10 @@ class ProfileFragment : Fragment() {
         }
 
         btnEditPic.setOnClickListener {
-            Toast.makeText(requireContext(), "Membuka pemilih gambar...", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "(placeholder untuk gallery/image picker)", Toast.LENGTH_SHORT).show()
         }
 
-        logoutContainer.setOnClickListener {
+        mBtnLogOut.setOnClickListener {
             clearUserSession()
 
             val intent = Intent(requireContext(), LoginActivity::class.java)
@@ -95,6 +96,6 @@ class ProfileFragment : Fragment() {
             remove("USER_ID")
             apply()
         }
-        Toast.makeText(requireContext(), "Berhasil Log Out", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Successfully logged out!", Toast.LENGTH_SHORT).show()
     }
 }

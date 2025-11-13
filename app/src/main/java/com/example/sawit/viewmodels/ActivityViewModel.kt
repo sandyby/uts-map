@@ -14,6 +14,16 @@ class ActivityViewModel : ViewModel() {
         loadHardcodedActivities()
     }
 
+    fun updateActivityStatus(id: String, newStatus: String) {
+        _activities.value = _activities.value.map { activity ->
+            if (activity.id == id) activity.copy(status = newStatus) else activity
+        }
+    }
+
+    fun deleteActivity(id: String) {
+        _activities.value = _activities.value.filter { it.id != id }
+    }
+
     private fun loadHardcodedActivities() {
         val dummyList = listOf(
             Activity(

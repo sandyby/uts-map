@@ -5,46 +5,52 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sawit.R
+import com.google.android.material.textfield.TextInputEditText
 
 class EditProfileActivity : AppCompatActivity() {
 
-    private var currentEmail: String = ""
+    private lateinit var currentFullName: String
+    private lateinit var currentEmailAddress: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Edit Profil"
+        supportActionBar?.title = "Edit Profile"
 
-        val etName = findViewById<EditText>(R.id.et_edit_name)
-        val etEmail = findViewById<EditText>(R.id.et_edit_email)
+        val tietFullName = findViewById<TextInputEditText>(R.id.tiet_full_name_field)
+        val tietEmailAddress = findViewById<TextInputEditText>(R.id.tiet_email_address_field)
         val btnSave = findViewById<Button>(R.id.btn_save_profile)
+        val ivBack = findViewById<ImageView>(R.id.iv_back)
 
-        val initialName = intent.getStringExtra("EXTRA_INITIAL_NAME") ?: "Nama Pengguna"
-        currentEmail = intent.getStringExtra("EXTRA_INITIAL_EMAIL") ?: "email@default.com"
+        currentFullName = intent.getStringExtra("EXTRA_INITIAL_NAME") ?: "John Doe"
+        currentEmailAddress = intent.getStringExtra("EXTRA_INITIAL_EMAIL") ?: "john.doe@gmail.com"
 
-        etName.setText(initialName)
-        etEmail.setText(currentEmail)
+        tietFullName.setText(currentFullName)
+        tietEmailAddress.setText(currentEmailAddress)
+
+        ivBack.setOnClickListener {
+            finish()
+        }
 
         btnSave.setOnClickListener {
-            val newName = etName.text.toString().trim()
+            val newName = tietFullName.text.toString().trim()
 
             if (newName.isEmpty()) {
-                Toast.makeText(this, "Nama tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter your full name!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Logika Penyimpanan Data (Hanya Nama yang diubah)
-
-            Toast.makeText(this, "Profil berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Profile successfully changed!", Toast.LENGTH_SHORT).show()
 
             val resultIntent = Intent()
             resultIntent.putExtra("EXTRA_NEW_NAME", newName)
-            resultIntent.putExtra("EXTRA_NEW_EMAIL", currentEmail) // Mengirim email lama kembali
+            resultIntent.putExtra("EXTRA_NEW_EMAIL", currentEmailAddress)
 
             setResult(Activity.RESULT_OK, resultIntent)
             finish()

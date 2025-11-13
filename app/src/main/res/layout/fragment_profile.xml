@@ -46,6 +46,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:visibility="gone"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="6dp"
@@ -88,22 +89,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_user_name" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="24dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_user_email"
-                app:layout_constraintVertical_bias="0.506" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/item_edit_profile"
                 android:layout_width="match_parent"
@@ -126,21 +111,21 @@
                     android:id="@+id/iv_menu_icon_edit"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:contentDescription="Ikon Edit"
+                    android:contentDescription="Edit Icon"
                     android:src="@android:drawable/ic_menu_edit"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/text_primary_500" />
+                    app:tint="@color/text_primary_900" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
+                    android:fontFamily="@font/lato_bold"
                     android:text="Edit Profile"
                     android:textColor="@color/text_primary_900"
                     android:textSize="16sp"
-                    android:fontFamily="@font/lato_bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_menu_icon_edit"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -168,19 +153,19 @@
                     android:id="@+id/iv_menu_icon_password"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:contentDescription="Ikon Lock"
+                    android:contentDescription="Lock Icon"
                     android:src="@android:drawable/ic_lock_idle_lock"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:tint="@color/text_primary_500"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/text_primary_900" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:text="Edit Password"
                     android:fontFamily="@font/lato_bold"
+                    android:text="Edit Password"
                     android:textColor="@color/text_primary_900"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -189,50 +174,29 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/logout_container"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mBtn_logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingVertical="8dp"
-                android:layout_marginBottom="12dp"
-                android:gravity="center"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginVertical="12dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/text_fiery_red_sunset_600"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Log Out"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:icon="@drawable/ic_filled_logout_24_white"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconSize="24sp"
+                app:iconTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/item_edit_password"
-                tools:layout_editor_absoluteX="12dp"
-                tools:layout_editor_absoluteY="417dp">
-
-                <ImageView
-                    android:id="@+id/iv_menu_icon_logout"
-                    android:layout_width="24dp"
-                    android:layout_height="30dp"
-                    android:contentDescription="Ikon Keluar"
-                    android:rotation="90"
-                    android:src="@android:drawable/ic_menu_upload"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/text_fiery_red_sunset_600" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:text="Log Out"
-                    android:textColor="@color/text_fiery_red_sunset_600"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/iv_menu_icon_logout"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </LinearLayout>
+                app:shapeAppearanceOverlay="@style/button_custom_corners" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

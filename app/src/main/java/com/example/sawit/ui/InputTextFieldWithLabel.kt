@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -38,6 +40,7 @@ fun InputTextWithLabel(
     ),
     modifier: Modifier = Modifier,
     inputTextFieldModifier: Modifier = Modifier.fillMaxWidth(),
+    trailingIcon: @Composable (() -> Unit)? = null
 ) {
     Column(
         modifier = modifier
@@ -70,6 +73,9 @@ fun InputTextWithLabel(
                 }
             ),
             singleLine = true,
+            isError = isError,
+            visualTransformation = if (type == "textPassword") PasswordVisualTransformation() else VisualTransformation.None,
+            trailingIcon = trailingIcon,
             modifier = inputTextFieldModifier,
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = BgPrimary500,
@@ -82,6 +88,7 @@ fun InputTextWithLabel(
             Text(
                 text = errorMsg,
                 color = TextError900,
+                style = MaterialTheme.typography.bodySmall,
                 modifier = Modifier.padding(top = 4.dp)
             )
         }

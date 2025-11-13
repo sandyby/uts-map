@@ -11,11 +11,11 @@ import com.example.sawit.models.Activity
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class ActivityAdapter(
+class ActivitiesAdapter(
     private val onCheckboxClicked: (Activity, Boolean) -> Unit,
     private val onEditClicked: (Activity) -> Unit,
     private val onDeleteClicked: (Activity) -> Unit
-) : ListAdapter<Activity, ActivityAdapter.ActivityViewHolder>(ActivityDiffCallback()) {
+) : ListAdapter<Activity, ActivitiesAdapter.ActivityViewHolder>(ActivityDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
         val binding =

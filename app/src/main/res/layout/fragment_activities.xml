@@ -4,43 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0EDD0"
-    tools:context=".activities.ActivitiesFragment">
+    android:background="@color/bg_secondary_900"
+    tools:context=".fragments.ActivitiesFragment">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+        android:id="@+id/tl_activities"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent"
         app:tabBackground="@android:color/transparent"
+        app:tabGravity="fill"
         app:tabIndicatorColor="@color/text_primary_900"
-        app:tabTextColor="@color/text_primary_900">
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/text_primary_900"
+        app:tabTextColor="@color/text_700" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Planned" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Completed" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewActivities"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_activities"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        tools:listitem="@layout/item_activity" />
+        app:layout_constraintTop_toBottomOf="@id/tl_activities" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddActivity"
@@ -53,7 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@android:color/white"
         tools:ignore="ContentDescription" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

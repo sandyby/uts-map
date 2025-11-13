@@ -12,6 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.sawit.R
+import com.example.sawit.fragments.ActivitiesFragment
 import com.example.sawit.fragments.FieldsFragment
 import com.example.sawit.fragments.HomeFragment
 import com.example.sawit.fragments.PredictFragment

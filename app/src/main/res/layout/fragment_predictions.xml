@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_secondary_900"
-    android:padding="20dp"
     tools:context=".fragments.PredictionsFragment">
 
     <com.google.android.material.tabs.TabLayout
@@ -21,8 +20,8 @@
         app:tabIndicatorHeight="3dp"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/text_primary_900"
-        app:tabTextAppearance="@style/CustomTabLayoutTextStyle"
-        app:tabTextColor="@color/text_600" />
+        app:tabTextAppearance="@style/CustomTabLayoutText"
+        app:tabTextColor="@color/text_700" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_predictions"
